@@ -35,6 +35,6 @@ console.log('the new date is: ', new Date());
 const date_ = () => new Date();
 console.log('the value of the anonymous arrow function new date is:', date_())
 
-export {myAnotherFunc, myFunc};
+export {myAnotherFunc, myFunc1};
 
 
