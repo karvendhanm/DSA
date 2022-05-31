@@ -1,10 +1,8 @@
 function chunkArrayInGroups(arr, size) {
     let _arr = [];
-    let loopCount = Math.floor(arr.length/size);
-    let remainder = Math.floor(arr.length%size);
-    if(remainder) {remainder = 1}
-    for(let i=0; i<(loopCount + remainder); i++) {
-        _arr.push(arr.slice(0+(i*size), size+(i*size)));
+    let loopCount = Math.ceil(arr.length/size);
+    for(let i=0; i<(loopCount); i++) {
+        _arr.push(arr.slice(i*size, size+(i*size)));
     }
     return _arr;
 }
