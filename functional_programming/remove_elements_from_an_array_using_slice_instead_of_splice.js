@@ -1,0 +1,14 @@
+const cities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+console.log(cities.splice(3, 1));
+console.log(cities);
+
+function nonMutatingSplice(cities) {
+    // Only change code below this line
+    return cities.slice(0, 3);
+
+    // Only change code above this line
+}
+
+const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+console.log(nonMutatingSplice(inputCities));
+console.log(inputCities);
