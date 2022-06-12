@@ -1,8 +1,8 @@
 const users = [
-    {'name':'Karvendhan', 'age':36},
-    {'name':'Nandhini', 'age':29},
-    {'name':'Aathuran', 'age':5},
-    {'name':'Aadhavan', 'age':2}
+    {'name':'human1', 'age':36},
+    {'name':'human2', 'age':29},
+    {'name':'child1', 'age':5},
+    {'name':'child2', 'age':2}
 ];
 
 console.log(users.filter(obj => obj['age'] >= 20));
