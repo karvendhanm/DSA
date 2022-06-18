@@ -1,9 +1,19 @@
 function diffArray(arr1, arr2) {
 
-    const arr1_set = new Set(arr1);
-    const arr2_set = new Set(arr2);
+    const arr = arr1.concat(arr2);
 
-    arr1_set.
+    let counter = {};
+    arr.forEach(item => {
+        counter[item] = (counter[item] || 0) +  1;
+        return counter;
+    });
+
+    const newArr = [];
+    for (let key in counter){
+        if (counter[key] === 1) {
+            newArr.push(parseInt(key) || key);
+        }
+    }
 
     return newArr;
 }
