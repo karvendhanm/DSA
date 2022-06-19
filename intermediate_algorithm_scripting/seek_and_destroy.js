@@ -10,18 +10,22 @@ function destroyer(arr) {
         }
     }
 
-    arr = arr.filter(item => {
-        if(_lst.indexOf(item) != -1) {
-            return false;
-        } else {
-            return true;
-        }
-    })
-
-    return arr;
+    return arr.filter(item => _lst.indexOf(item) != -1 ? false : true)
 }
 
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+
+// 3rd attempt
+// function destroyer(arr) {
+//     const _lst = [];
+//     for (let key in arguments){
+//         if(key != 0){
+//             _lst.push(arguments[key])
+//         }
+//     }
+//
+//     return arr.filter(item => _lst.indexOf(item) != -1 ? false : true)
+// }
 
 // 2nd attempt
 // function destroyer(arr) {
