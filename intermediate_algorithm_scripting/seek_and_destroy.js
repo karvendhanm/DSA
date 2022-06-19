@@ -2,13 +2,16 @@
 // followed by one or more arguments. Remove all elements from the initial array that are of the same
 // value as these arguments.
 
+// 4th attempt
 function destroyer(arr) {
-    const _lst = [];
-    for (let key in arguments){
-        if(key != 0){
-            _lst.push(arguments[key])
+    const _lst = [arguments].reduce((accumulator, item) => {
+        for(let key in item){
+            if(key != 0) {
+                accumulator.push(item[key]);
+            }
         }
-    }
+        return accumulator;
+    }, [] )
 
     return arr.filter(item => _lst.indexOf(item) != -1 ? false : true)
 }
