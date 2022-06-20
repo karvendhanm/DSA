@@ -2,12 +2,17 @@
 // followed by one or more arguments. Remove all elements from the initial array that are of the same
 // value as these arguments.
 
-// 5th attempt
-function destroyer(arr, ...val) {
-    return arr.filter(item => val.indexOf(item) != -1 ? false : true)
+// 6th attempt
+function destroyer(arr, ...valToRemove) {
+    return arr.filter(item => !valToRemove.includes(item))
 }
 
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+
+// 5th attempt
+// function destroyer(arr, ...val) {
+//     return arr.filter(item => val.indexOf(item) != -1 ? false : true)
+// }
 
 // 4th attempt
 // function destroyer(arr) {
