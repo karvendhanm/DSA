@@ -1,19 +1,31 @@
-// 2nd attempt
+// 3rd attempt
 function whatIsInAName(collection, source) {
     return collection.filter(item => {
-        let k = 0;
         for(let key in source) {
-            if ((item.hasOwnProperty(key)) && (item[key] === source[key])){
-                k += 1;
-                if(k === Object.keys(source).length) {
-                    return true;
-                }
+            if (!item.hasOwnProperty(key) || source[key] != item[key]){
+                return false;
             }
         }
+        return true;
     });
 }
 
-console.log(whatIsInAName([{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }], { "apple": 1 }));
+console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 }));
+
+// 2nd attempt
+// function whatIsInAName(collection, source) {
+//     return collection.filter(item => {
+//         let k = 0;
+//         for(let key in source) {
+//             if ((item.hasOwnProperty(key)) && (item[key] === source[key])){
+//                 k += 1;
+//                 if(k === Object.keys(source).length) {
+//                     return true;
+//                 }
+//             }
+//         }
+//     });
+// }
 
 // 1st attempt
 // function whatIsInAName(collection, source) {
