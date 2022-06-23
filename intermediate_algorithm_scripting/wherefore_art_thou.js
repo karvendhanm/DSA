@@ -1,16 +1,24 @@
-// 3rd attempt
+// 4th attempt
 function whatIsInAName(collection, source) {
-    return collection.filter(item => {
-        for(let key in source) {
-            if (!item.hasOwnProperty(key) || source[key] != item[key]){
-                return false;
-            }
-        }
-        return true;
-    });
+    let sourceKeys = Object.keys(source);
+
+    return collection.filter(obj =>
+                    sourceKeys.every(key => obj.hasOwnProperty(key) && obj[key] === source[key]))
 }
 
 console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "cookie": 2 }));
+
+// 3rd attempt
+// function whatIsInAName(collection, source) {
+//     return collection.filter(item => {
+//         for(let key in source) {
+//             if (!item.hasOwnProperty(key) || source[key] != item[key]){
+//                 return false;
+//             }
+//         }
+//         return true;
+//     });
+// }
 
 // 2nd attempt
 // function whatIsInAName(collection, source) {
