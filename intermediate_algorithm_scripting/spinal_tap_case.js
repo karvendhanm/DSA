@@ -1,5 +1,5 @@
 function spinalCase(str) {
-
+//  Spinal tape case
 }
 
 console.log(spinalCase('This Is Spinal Tap'));
