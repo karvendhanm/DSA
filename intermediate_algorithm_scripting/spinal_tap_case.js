@@ -1,5 +1,15 @@
+// first attempt
 function spinalCase(str) {
 //  Spinal tape case:
+
+    const regex_pattern0 = /[^a-zA-Z]/g;
+    const regex_pattern1 = /(?<!^)([A-Z])/g;
+    str = str.replace(regex_pattern0, '*');
+    str = str.replace(regex_pattern1, '*\$1');
+    str = str.toLowerCase();
+    str = str.replace(/\*+/g, "-");
+    return str;
+
 }
 
 console.log(spinalCase('This Is Spinal Tap'));
