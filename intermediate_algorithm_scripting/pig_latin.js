@@ -1,10 +1,17 @@
-// fourth attempt
-function translatePigLatin(str) {
-    const _lst = ['a', 'e', 'i', 'o', 'u'];
-    return _lst.includes(str[0]) ? str + "way" : str.replace(/^([^aeiou]+)(.*)/, '$2$1ay')
+// fifth attempt using recursion
+function translatePigLatin(str, char_pos = 0) {
+     return (['a', 'e', 'i', 'o', 'u'].includes(str[0]) && (char_pos === 0)) ? str + 'way'
+         : ((['a', 'e', 'i', 'o', 'u'].includes(str[0])) || (char_pos === str.length)) ? str + 'ay'
+             : translatePigLatin(str.slice(1) + str[0], char_pos + 1)
 }
 
-console.log(translatePigLatin("eight"));
+console.log(translatePigLatin("rhythm"));
+
+// // fourth attempt
+// function translatePigLatin(str) {
+//     const _lst = ['a', 'e', 'i', 'o', 'u'];
+//     return _lst.includes(str[0]) ? str + "way" : str.replace(/^([^aeiou]+)(.*)/, '$2$1ay')
+// }
 
 // // third attempt
 // function translatePigLatin(str) {
