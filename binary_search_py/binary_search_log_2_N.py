@@ -1,7 +1,23 @@
 # binary search
 # After a list or an array is sorted, binary search takes just log2(N) to find the element.
+import math
 
-def binary_search(_lst, elem):
+
+def binary_seach(_lst, item):
+    '''
+
+    :param _lst: A list of elements
+    :param item: the nummber whose index needs to be indentified in the list(_lst)
+    :return: index of the item in the list(_lst)
+    '''
+
+    low = 0
+    high = len(_lst) - 1
+    mid = math.floor((low + high)/2)
+
+
+
+def binary_search_recursion(_lst, elem):
     '''
 
 
@@ -15,10 +31,10 @@ def binary_search(_lst, elem):
     _idx = int(_len/2) if _len % 2 == 0 else int((_len-1)/2)
     if _lst[_idx] != elem:
         if elem > _lst[_idx]:
-            temp_idx = binary_search(_lst[_idx + 1:], elem)
+            temp_idx = binary_search_recursion(_lst[_idx + 1:], elem)
             _idx += (temp_idx + 1)
         else:
-            _idx = binary_search(_lst[:_idx], elem)
+            _idx = binary_search_recursion(_lst[:_idx], elem)
 
     return _idx
 
