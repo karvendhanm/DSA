@@ -24,5 +24,5 @@ def binary_search(_lst, elem):
 
 
 _lst = [11, 34, 46, 57, 61, 63, 78, 81, 85, 86, 87, 99]
-elem_index = binary_search(_lst, 99)
+elem_index = binary_search(_lst, 199)
 print(elem_index)
