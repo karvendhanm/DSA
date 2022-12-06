@@ -6,14 +6,28 @@ import math
 def binary_seach(_lst, item):
     '''
 
-    :param _lst: A list of elements
-    :param item: the nummber whose index needs to be indentified in the list(_lst)
-    :return: index of the item in the list(_lst)
+    :param _lst: A sorted list of elements, binary search works only if the list is sorted.
+    :param item: the number whose index needs to be identified in the list(_lst).
+    :return: index of the item in the list(_lst).
     '''
+    if item not in _lst:
+        return "item not in the list"
 
     low = 0
     high = len(_lst) - 1
-    mid = math.floor((low + high)/2)
+
+    while True:
+
+        mid = math.floor((low + high) / 2)
+        guess = _lst[mid]
+        if guess > item:
+            high = mid - 1
+        elif guess < item:
+            low = mid + 1
+        else:
+            return mid
+
+    return None
 
 
 
@@ -40,5 +54,5 @@ def binary_search_recursion(_lst, elem):
 
 
 _lst = [11, 34, 46, 57, 61, 63, 78, 81, 85, 86, 87, 99]
-elem_index = binary_search(_lst, 199)
+elem_index = binary_seach(_lst, 99)
 print(elem_index)
