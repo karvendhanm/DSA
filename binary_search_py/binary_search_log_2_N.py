@@ -11,18 +11,43 @@ def binary_seach(_lst, item):
     :return: index of the item in the list(_lst).
     '''
     if item not in _lst:
-        return "item not in the list"
+        return None
 
     low = 0
     high = len(_lst) - 1
 
-    while True:
+    while low != high:
 
         mid = math.floor((low + high) / 2)
         guess = _lst[mid]
         if guess > item:
             high = mid - 1
         elif guess < item:
+            low = mid + 1
+        else:
+            return mid
+
+    return low
+
+
+def binary_search_grokking(array, target):
+    '''
+
+    :param array:
+    :param target:
+    :return:
+    '''
+
+    low = 0
+    high = len(_lst) - 1
+
+    while low <= high:
+        mid = math.floor((low + high)/2)
+        guess = array[mid]
+
+        if guess > target:
+            high = mid - 1
+        elif guess < target:
             low = mid + 1
         else:
             return mid
@@ -54,5 +79,5 @@ def binary_search_recursion(_lst, elem):
 
 
 _lst = [11, 34, 46, 57, 61, 63, 78, 81, 85, 86, 87, 99]
-elem_index = binary_seach(_lst, 99)
+elem_index = binary_search_grokking(_lst, 99)
 print(elem_index)
