@@ -2,6 +2,7 @@ import unittest
 
 from binary_search_py import binary_search
 
+
 class TestProgram(unittest.TestCase):
     def test_case_1(self):
         self.assertEqual(binary_search([36, 56, 66, 72, 76, 108], 76), 4)
