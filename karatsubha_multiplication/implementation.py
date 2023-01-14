@@ -10,10 +10,6 @@ def karatsubha_multiplication(left_num, right_num):
     if not isinstance(left_num, int) or  not isinstance(right_num, int):
         return "two integers are expected as arguments for this function"
 
-    _lst = [left_num, right_num]
-    _lst.sort()
-    left_num, right_num = _lst[0], _lst[1]
-
     left_num_length = len(str(left_num))
     right_num_length = len(str(right_num))
 
