@@ -1,6 +1,6 @@
 import unittest
 
-from karatsubha_multiplication import karatsubha_multiplication as km
+from karatsubha_multiplication_py import karatsubha_multiplication as km
 
 class TestKaratSubha(unittest.TestCase):
     def test_case_1(self):

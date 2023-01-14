@@ -29,7 +29,7 @@ def karatsubha_multiplication(left_num, right_num):
     if left_num_stripped_length == 1 and right_num_stripped_length == 1:
         _product = left_num_stripped * right_num_stripped
         len_product = len(str(_product))
-        # this step is necessary as only single step multiplication is allowed
+        # this step is necessary as only single digit multiplication is allowed
         val = int(str(_product).ljust(len_product + left_len_diff + right_len_diff, '0'))
         return val
 
