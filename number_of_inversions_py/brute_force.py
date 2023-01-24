@@ -16,5 +16,5 @@ def count_num_inversions(arr):
 
 
 if __name__ == '__main__':
-    res = count_num_inversions([4, 3, 6, 5, 1, 2])
+    res = count_num_inversions([4, 3, 2, 1])
     print(res)
