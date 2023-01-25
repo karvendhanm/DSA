@@ -1,6 +1,6 @@
 import unittest
 
-from number_of_inversions_py import count_num_inversions, CountSplitInversions
+from number_of_inversions_py import count_num_inversions, CountSplitInversions, CountNumOfInversions
 
 class TestNumberOfInversions(unittest.TestCase):
     def test_case_1(self):
@@ -32,5 +32,22 @@ class TestNumberOfInversions(unittest.TestCase):
 
     def test_case_9(self):
         self.assertEqual(CountSplitInversions([1, 5, 6, 9, 13], [7, 8]), ([1, 5, 6, 7, 8, 9, 13], 4))
+
+    def test_case_10(self):
+        self.assertEqual(CountNumOfInversions([5, 4, 6, 3, 2, 1]), ([1, 2, 3, 4, 5, 6], 13))
+
+    def test_case_11(self):
+        self.assertEqual(CountNumOfInversions([6, 5, 4, 3, 2, 1]), ([1, 2, 3, 4, 5, 6], 15))
+
+    def test_case_12(self):
+        self.assertEqual(CountNumOfInversions([]), ([], 0))
+
+    def test_case_13(self):
+        self.assertEqual(CountNumOfInversions([4, 2, 3, 1]), ([1, 2, 3, 4], 5))
+
+    def test_case_14(self):
+        self.assertEqual(CountNumOfInversions([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]), ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 45))
+
+
 
 
