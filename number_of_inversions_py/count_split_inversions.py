@@ -3,7 +3,8 @@ def CountSplitInversions(arr1, arr2):
 
     :param arr1: the input array must be a sorted array
     :param arr2: the input array must be a sorted array
-    :return:
+    :return: the function merges arr1 and arr2. Along with the merged array it returns the
+             number of inversions between the two arrays (split inversions).
     '''
 
     len_aar1 = len(arr1)
