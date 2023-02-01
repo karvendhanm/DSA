@@ -48,6 +48,15 @@ class TestNumberOfInversions(unittest.TestCase):
     def test_case_14(self):
         self.assertEqual(CountNumOfInversions([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]), ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 45))
 
+    def test_case_15(self):
+        self.assertEqual(CountNumOfInversions([1, 3, 5, 2, 4, 6]), ([1, 2, 3, 4, 5, 6], 3))
+
+    def test_case_16(self):
+        self.assertEqual(CountNumOfInversions([4, 3, 6, 5, 1, 2]), ([1, 2, 3, 4, 5, 6], 10))
+
+    def test_case_17(self):
+        self.assertEqual(CountNumOfInversions([6, 5, 4, 5, 1, 3]), ([1, 3, 4, 5, 5, 6], 12))
+
 
 
 
