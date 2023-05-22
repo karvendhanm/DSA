@@ -7,7 +7,7 @@ def karatsubha_multiplication(left_num, right_num):
     '''
 
     # both the arguments to the function needs to be an integer
-    if not isinstance(left_num, int) or  not isinstance(right_num, int):
+    if not isinstance(left_num, int) or not isinstance(right_num, int):
         return "two integers are expected as arguments for this function"
 
     left_num_length = len(str(left_num))
@@ -47,8 +47,3 @@ def karatsubha_multiplication(left_num, right_num):
     last_part = karatsubha_multiplication(left_remainder, right_remainder)
 
     return first_part + second_part + third_part + last_part
-
-
-
-
-
