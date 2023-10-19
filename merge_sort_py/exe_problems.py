@@ -69,8 +69,53 @@ def find_modes(arr):
     :return:
     """
 
+    if len(arr) <= 1:
+        return arr
+
     # sorting the array
     arr = merge_sort2(arr)
+
+    mode_lst = []
+    highest_freq = 0
+    previous_elem = None
+    for _idx, elem in enumerate(arr):
+
+        if elem != previous_elem:
+            current_elem_freq = 1
+        else:
+            current_elem_freq += 1
+
+        if (current_elem_freq == highest_freq) & (elem not in mode_lst):
+            mode_lst.append(elem)
+
+        elif current_elem_freq > highest_freq:
+            mode_lst = [elem]
+            highest_freq += 1
+
+        previous_elem = elem
+
+    return mode_lst
+
+
+def compute_median(arr):
+    """
+
+    :param arr: input array always has distinct integers and the length of the input array is odd.
+    :return: median - number of other elements less than it equal to the number of elements greater than it.
+    """
+
+    if len(arr) <= 1:
+        return arr
+
+    # sorting the array
+    arr = merge_sort2(arr)
+
+    return arr[len(arr)//2]
+
+
+
+    
+
 
 
 

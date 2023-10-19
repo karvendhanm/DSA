@@ -1,6 +1,6 @@
 import unittest
 
-from merge_sort_py import min_gap, num_distinct_integers, deduplicate_array
+from merge_sort_py import min_gap, num_distinct_integers, deduplicate_array, find_modes, compute_median
 
 
 class TestProgramMergeSortExeProblem(unittest.TestCase):
@@ -27,4 +27,31 @@ class TestProgramMergeSortExeProblem(unittest.TestCase):
 
     def test_case_7(self):
         self.assertEqual(deduplicate_array([-6, -6, -6, 6, 6, -6, -5]), [-6, -5, 6])
+
+    def test_case_8(self):
+        self.assertEqual(find_modes([1, 1, 3, 2, 4, 4, 5, 5, 6]), [1, 4, 5])
+
+    def test_case_9(self):
+        self.assertEqual(find_modes([]), [])
+
+    def test_case_10(self):
+        self.assertEqual(find_modes([5]), [5])
+
+    def test_case_11(self):
+        self.assertEqual(find_modes([1, 1, 3, 2, 4, 4, 4, 5, 5, 6]), [4])
+
+    def test_case_12(self):
+        self.assertEqual(find_modes([1, 1, 3, 2, 4, 4, 4, 5, 5, 5, 6]), [4, 5])
+
+    def test_case_13(self):
+        self.assertEqual(find_modes([-1, -1, -1, -2, -2, -2, -3, -3, -3]), [-3, -2, -1])
+
+    def test_case_14(self):
+        self.assertEqual(compute_median([]), [])
+
+    def test_case_15(self):
+        self.assertEqual(compute_median([5]), [5])
+
+    def test_case_16(self):
+        self.assertEqual(compute_median([1, 2, 3, 4, 5, 6, 7]), 4)
 
