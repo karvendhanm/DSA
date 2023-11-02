@@ -1,6 +1,7 @@
 import unittest
 
 from merge_sort_py import min_gap, num_distinct_integers, deduplicate_array, find_modes, compute_median
+from merge_sort_py import find_2nd_biggest_number
 
 
 class TestProgramMergeSortExeProblem(unittest.TestCase):
@@ -54,4 +55,49 @@ class TestProgramMergeSortExeProblem(unittest.TestCase):
 
     def test_case_16(self):
         self.assertEqual(compute_median([1, 2, 3, 4, 5, 6, 7]), 4)
+
+    def test_case_17(self):
+        self.assertEqual(find_2nd_biggest_number([5, 7, 3, 0, 2, 4, 9, 1]), 7)
+
+    def test_case_18(self):
+        self.assertEqual(find_2nd_biggest_number([]), None)
+
+    def test_case_19(self):
+        self.assertEqual(find_2nd_biggest_number([-1]), None)
+
+    def test_case_20(self):
+        self.assertEqual(find_2nd_biggest_number([3, 17]), 3)
+
+    def test_case_21(self):
+        self.assertEqual(find_2nd_biggest_number([4, 9, 10]), 9)
+
+    def test_case_22(self):
+        self.assertEqual(find_2nd_biggest_number([-9, -424, 9, 15]), 9)
+
+    def test_case_23(self):
+        self.assertEqual(find_2nd_biggest_number([-9, -424, -3, 15]), -3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
