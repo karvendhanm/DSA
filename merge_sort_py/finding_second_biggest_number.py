@@ -67,7 +67,10 @@ def find_2nd_biggest_number_v2(arr):
     return big2
 
 
-find_2nd_biggest_number_v2([4, 5, 6, 7, 8, 9, 10, 11])
+# TODO find a way to identify the second-largest number in the array of distinct integers
+#  while using at most n - 2 + log2(n) comparisons.
+
+
 
 
 

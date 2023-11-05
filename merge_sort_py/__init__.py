@@ -2,4 +2,4 @@ from merge_sort_py.combining_2_sorted_array_in_increasing_order import merge_asc
 from merge_sort_py.merge_sort_implementation import merge_sort
 from merge_sort_py.merge_sort_implementation_2 import combine_two_arrays, merge_sort2
 from merge_sort_py.exe_problems import min_gap, num_distinct_integers, deduplicate_array, find_modes, compute_median
-from merge_sort_py.finding_second_biggest_number import find_2nd_biggest_number
+from merge_sort_py.finding_second_biggest_number import find_2nd_biggest_number_v1, find_2nd_biggest_number_v2
