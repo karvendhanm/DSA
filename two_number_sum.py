@@ -1,3 +1,18 @@
+# def twoNumberSum(array, targetSum):
+#     """
+#
+#     :param array:
+#     :param target_sum:
+#     :return:
+#     """
+#     for idx, i in enumerate(array[:-1]):
+#         for j in array[idx+1:]:
+#             if i + j == targetSum:
+#                 return [i, j]
+#     return []
+
+
+# degrees of freedom approach
 def twoNumberSum(array, targetSum):
     """
 
@@ -5,10 +20,10 @@ def twoNumberSum(array, targetSum):
     :param target_sum:
     :return:
     """
-    for idx, i in enumerate(array[:-1]):
-        for j in array[idx+1:]:
-            if i + j == targetSum:
-                return [i, j]
+    for idx, x in enumerate(array):
+        y = targetSum - x
+        if (x != y) & (y in array):
+            return [x, y]
     return []
 
 
