@@ -36,11 +36,27 @@
 #     return False
 
 
+# def isValidSubsequence(array, sequence):
+#     # Write your code here.
+#     _lst = []
+#     for arr in array:
+#         if arr in sequence:
+#             _lst.append(arr)
+#             if len(_lst) == len(sequence):
+#                 break
+
+#     if _lst == sequence:
+#         return True
+#     return False
+
+
 def isValidSubsequence(array, sequence):
     # Write your code here.
     _lst = []
+    sequence1 = sequence.copy()
     for arr in array:
-        if arr in sequence:
+        if arr in sequence1:
+            sequence1.remove(arr)
             _lst.append(arr)
             if len(_lst) == len(sequence):
                 break
