@@ -14,29 +14,40 @@
 #     return tmp[0][0]
 
 
-def find_tournament_winner(_dict):
-    winning_team = ""
-    winning_score = 0
-    for team, score in _dict.items():
-        if score > winning_score:
-            winning_team = team
-            winning_score = score
-    return winning_team
+# def find_tournament_winner(_dict):
+#     winning_team = ""
+#     winning_score = 0
+#     for team, score in _dict.items():
+#         if score > winning_score:
+#             winning_team = team
+#             winning_score = score
+#     return winning_team
+
+
+# def tournamentWinner(competitions, results):
+#     # Write your code here.
+#     tournament_pts_standing = {}
+#     results = [1 if result == 0 else 0 for result in results]
+
+#     for idx in range(len(competitions)):
+#         winning_team = competitions[idx][results[idx]]
+#         if winning_team in tournament_pts_standing:
+#             tournament_pts_standing[winning_team] += 3
+#         else:
+#             tournament_pts_standing[winning_team] = 3
+
+#     return find_tournament_winner(tournament_pts_standing)
 
 
 def tournamentWinner(competitions, results):
     # Write your code here.
     tournament_pts_standing = {}
-    results = [1 if result == 0 else 0 for result in results]
 
-    for idx in range(len(competitions)):
-        winning_team = competitions[idx][results[idx]]
-        if winning_team in tournament_pts_standing:
-            tournament_pts_standing[winning_team] += 3
-        else:
-            tournament_pts_standing[winning_team] = 3
+    for competition, result in zip(competitions, results):
+        winning_team = competition[1 - result]
+        tournament_pts_standing[winning_team] = tournament_pts_standing.get(winning_team, 0) + 3
 
-    return find_tournament_winner(tournament_pts_standing)
+    return max(tournament_pts_standing, key=lambda x: tournament_pts_standing[x])
 
 
 competitions = [
