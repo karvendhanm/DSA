@@ -20,18 +20,32 @@
 #     return False
 
 
+# def isValidSubsequence(array, sequence):
+#     # Write your code here.
+#     lst = []
+#     arr_idx = 0
+#     for seq in sequence:
+#         for arr in array[arr_idx:]:
+#             arr_idx += 1
+#             if seq == arr:
+#                 lst.append(arr)
+#                 break
+
+#     if lst == sequence:
+#         return True
+#     return False
+
+
 def isValidSubsequence(array, sequence):
     # Write your code here.
-    lst = []
-    arr_idx = 0
-    for seq in sequence:
-        for arr in array[arr_idx:]:
-            arr_idx += 1
-            if seq == arr:
-                lst.append(arr)
+    _lst = []
+    for arr in array:
+        if arr in sequence:
+            _lst.append(arr)
+            if len(_lst) == len(sequence):
                 break
 
-    if lst == sequence:
+    if _lst == sequence:
         return True
     return False
 
