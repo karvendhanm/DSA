@@ -39,15 +39,29 @@
 #     return find_tournament_winner(tournament_pts_standing)
 
 
+# def tournamentWinner(competitions, results):
+#     # Write your code here.
+#     tournament_pts_standing = {}
+
+#     for competition, result in zip(competitions, results):
+#         winning_team = competition[1 - result]
+#         tournament_pts_standing[winning_team] = tournament_pts_standing.get(winning_team, 0) + 3
+
+#     return max(tournament_pts_standing, key=lambda x: tournament_pts_standing[x])
+
+
 def tournamentWinner(competitions, results):
     # Write your code here.
-    tournament_pts_standing = {}
+    tournament_pts_standing = {"": 0}
+    current_best_team = ""
 
     for competition, result in zip(competitions, results):
         winning_team = competition[1 - result]
         tournament_pts_standing[winning_team] = tournament_pts_standing.get(winning_team, 0) + 3
+        if tournament_pts_standing[winning_team] > tournament_pts_standing[current_best_team]:
+            current_best_team = winning_team
 
-    return max(tournament_pts_standing, key=lambda x: tournament_pts_standing[x])
+    return current_best_team
 
 
 competitions = [
