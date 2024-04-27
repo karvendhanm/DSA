@@ -26,24 +26,31 @@ class BST(object):
 
 tree_root = BST(12).insert(9).insert(6).insert(3).insert(7).insert(8).insert(10).insert(11).insert(15).insert(16)
 
-def nodeDepths(root):
-    # Write your code here.
-    return nodeDepthsHelper(root, 0, 0)
+# def nodeDepths(root):
+#     # Write your code here.
+#     return nodeDepthsHelper(root, 0, 0)
+#
+#
+# def nodeDepthsHelper(root, nodeLevel, nodeDepth):
+#     if root is None:
+#         return nodeDepth
+#
+#     nodeDepth += nodeLevel
+#
+#     if root.left is None and root.right is None:
+#         return nodeDepth
+#
+#     nodeDepth = nodeDepthsHelper(root.left, nodeLevel+1, nodeDepth)
+#     nodeDepth = nodeDepthsHelper(root.right, nodeLevel+1, nodeDepth)
+#
+#     return nodeDepth
 
 
-def nodeDepthsHelper(root, nodeLevel, nodeDepth):
+def nodeDepths(root, depth=0):
     if root is None:
-        return nodeDepth
+        return 0
 
-    nodeDepth += nodeLevel
-
-    if root.left is None and root.right is None:
-        return nodeDepth
-
-    nodeDepth = nodeDepthsHelper(root.left, nodeLevel+1, nodeDepth)
-    nodeDepth = nodeDepthsHelper(root.right, nodeLevel+1, nodeDepth)
-
-    return nodeDepth
+    return depth + nodeDepths(root.left, depth+1) + nodeDepths(root.right, depth+1)
 
 
 print(nodeDepths(tree_root))
