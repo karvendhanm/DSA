@@ -43,7 +43,7 @@ def findClosestValueInBSTHelper(tree, target, closest_value):
     if target < tree.value:
         return findClosestValueInBSTHelper(tree.left, target, closest_value)
     elif target > tree.value:
-        return findClosestValueInBSTHelper(tree.right, target, closest_value))
+        return findClosestValueInBSTHelper(tree.right, target, closest_value)
 
     return closest_value
 
