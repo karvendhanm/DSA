@@ -36,7 +36,6 @@ class Node:
     def depthFirstSearch(self, array):
         # Write your code here.
         array.append(self.name)
-        if len(self.children):
-            for item in self.children:
-                array = item.depthFirstSearch(array)
+        for item in self.children:
+            item.depthFirstSearch(array)
         return array
