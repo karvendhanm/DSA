@@ -13,7 +13,7 @@ def minimumWaitingTime(queries):
     queries.sort()
     total_waiting_time = 0
     for _idx, query in enumerate(queries):
-        queries_left = len(queries) - 1 - _idx
+        queries_left = len(queries) - (_idx + 1)
         total_waiting_time += query * queries_left
     return total_waiting_time
 
