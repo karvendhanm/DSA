@@ -3,9 +3,6 @@ def classPhotos(redShirtHeights, blueShirtHeights):
     redShirtHeights.sort()
     blueShirtHeights.sort()
 
-    if blueShirtHeights[0] == redShirtHeights[0]:
-        return False
-
     if blueShirtHeights[0] > redShirtHeights[0]:
         redShirtHeights, blueShirtHeights = blueShirtHeights, redShirtHeights
 
