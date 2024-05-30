@@ -49,6 +49,27 @@ def optimalFreelancing(jobs):
     return total_profit
 
 
+# third iteration
+def optimalFreelancing(jobs):
+    # Write your code here.
+    
+    DAYS_OF_THE_WEEK = 7
+    profit = 0
+    
+    jobs.sort(key=lambda x: x['payment'], reverse=True)
+    timeline = [0] * DAYS_OF_THE_WEEK
+    
+    for job in jobs:
+        maxTime = min(job['deadline'], DAYS_OF_THE_WEEK)
+        
+        for time in reversed(range(maxTime)):
+            if timeline[time] == 0:
+                profit += job['payment']
+                timeline[time] = 1
+                break
+    return profit
+
+
 
 jobs = [
     {"deadline": 2, "payment": 1},
