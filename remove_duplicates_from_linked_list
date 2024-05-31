@@ -30,3 +30,20 @@ def removeDuplicatesFromLinkedList(linkedList):
         else:
             currentNode = currentNode.next
     return linkedList
+
+
+# second iteration
+def removeDuplicatesFromLinkedList(linkedList):
+    # Write your code here.
+    currentNode = linkedList
+
+    while currentNode is not None:
+        nextDistinctNode = currentNode.next
+
+        while nextDistinctNode is not None and currentNode.value == nextDistinctNode.value :
+            nextDistinctNode = nextDistinctNode.next
+
+        currentNode.next = nextDistinctNode
+        currentNode = nextDistinctNode
+
+    return linkedList
