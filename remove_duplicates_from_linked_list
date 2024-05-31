@@ -1,0 +1,32 @@
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+    def insert(self, value):
+        currentNode = self
+
+        while True:
+            if currentNode.next is None:
+                currentNode.next = LinkedList(value)
+                break
+
+            currentNode = currentNode.next
+
+        return self
+
+
+llist = LinkedList(1).insert(1).insert(3).insert(4).insert(4).insert(4).insert(5).insert(6).insert(6)
+
+
+# iteration one
+def removeDuplicatesFromLinkedList(linkedList):
+    # Write your code here.
+    currentNode = linkedList
+
+    while currentNode.next is not None:
+        if currentNode.value == currentNode.next.value:
+            currentNode.next = currentNode.next.next
+        else:
+            currentNode = currentNode.next
+    return linkedList
