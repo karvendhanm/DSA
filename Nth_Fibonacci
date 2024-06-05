@@ -6,15 +6,42 @@
 #     return _lst[n-1]
 
 
+# O(2^n) time | O(n) space
 # second iteration
-def getNthFib(n):
-    # Write your code here.
-    if n == 1:
-        return 0
-    elif n == 2:
-        return 1
+# def getNthFib(n):
+#     # Write your code here.
+#     if n == 1:
+#         return 0
+#     elif n == 2:
+#         return 1
+#     else:
+#         return getNthFib(n - 2) + getNthFib(n - 1)
+
+
+# O(n) time | O(1) space
+# third iteration
+# def getNthFib(n):
+#     _lst = [0, 1]
+#     if n == 1:
+#         return _lst[0]
+#     elif n == 2:
+#         return _lst[1]
+#     else:
+#         for i in range(2, n):
+#             _lst.append(_lst[0] + _lst[1])
+#             _lst.pop(0)
+#     return _lst[1]
+
+
+# O(n) time | O(n) space
+# fourth iteration
+def getNthFib(n, memoize={1:0, 2:1}):
+    if n in memoize:
+        return memoize[n]
     else:
-        return getNthFib(n - 2) + getNthFib(n - 1)
-    
+        memoize[n] = getNthFib(n-1, memoize) + getNthFib(n-2, memoize)
+    return memoize[n]
+
+
 
 print(getNthFib(4))
