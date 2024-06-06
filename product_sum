@@ -1,0 +1,14 @@
+# O() time | O() space
+# first iteration
+def productSum(array, lvl=1):
+    # Write your code here.
+    arr_sum = 0
+    for elem in array:
+        if type(elem) == list:
+            arr_sum += productSum(elem, lvl + 1)
+        else:
+            arr_sum += elem
+    return lvl * arr_sum
+
+
+array = [5, 2, [7, -1], 3, [6, [-13, 8], 4]]
