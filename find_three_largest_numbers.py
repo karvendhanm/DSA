@@ -1,6 +1,6 @@
 import numpy as np
 
-# O(n) time | O(n) space
+# O(n) time | O(1) space
 # def findThreeLargestNumbers(array):
 #     # Write your code here.
 #     first_num, second_num, third_num = float('-inf'), float('-inf'), float('-inf')
@@ -17,7 +17,7 @@ import numpy as np
 #             third_num = num
 #     return [third_num, second_num, first_num]
 
-# O(n) time | O(n) space
+# O(n) time | O(1) space
 # second iteration
 def findThreeLargestNumbers(array):
     three_largest_nums = [float('-inf'), float('-inf'), float('-inf')]
