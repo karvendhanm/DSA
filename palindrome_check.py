@@ -11,3 +11,17 @@ def isPalindrome(string):
         start_idx += 1
         end_idx -= 1
     return True
+
+
+# recursive way of solving the palindrome check.
+# O(n) time |  O(n) space
+# O(n) time |  O(1) space if we consider tail recursion or tail calls
+def isPalindrome(string):
+
+    if len(string) <= 1:
+        return True
+
+    if string[0] != string[-1]:
+        return False
+
+    return isPalindrome(string[1:-1])
