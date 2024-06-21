@@ -1,5 +1,5 @@
 # first iteration
-# O(n) time | O(1) space
+# O(n) time | O(n) space
 # def caesarCipherEncryptor(string, key):
 #     # Write your code here.
 #     alphabets = list("abcdefghijklmnopqrstuvwxyz")
@@ -17,7 +17,7 @@
 
 
 # second iteration
-# O(n) time | O(1) space
+# O(n) time | O(n) space
 def caesarCipherEncryptor(string, key):
     # Write your code here.
     _lst = []
