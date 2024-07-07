@@ -22,17 +22,34 @@
 # n - number of words in the "words" list.
 # k - length of the longest string in the "words" list
 # p - number of semordnilap strings in the "words" list
+# def semordnilap(words):
+#     _dict = {}
+#     _lst = []
+#     for _idx, word in enumerate(words):                                     # O(n) time
+#         if word not in _dict:                                               # O(1) time
+#             reverse_word = word[::-1]                                       # O(k) time
+#             if reverse_word in words[(_idx + 1):]:                          # O(n) + O(n) time
+#                 _dict[reverse_word] = word
+#                 _lst.append([word, reverse_word])
+#     return _lst
+
+
+# third iteration
+# Let us say
+# n - number of words in the "words" list.
+# m - length of the longest string in the "words" list
+# O(n * m) time | O(n * m) space
 def semordnilap(words):
-    _dict = {}
-    _lst = []
-    for _idx, word in enumerate(words):                                     # O(n) time
-        if word not in _dict:                                               # O(1) time
-            reverse_word = word[::-1]                                       # O(k) time
-            if reverse_word in words[(_idx + 1):]:                          # O(n) + O(n) time
-                _dict[reverse_word] = word
-                _lst.append([word, reverse_word])
-    return _lst
+    words_set = set(words)                                                      # O(n * m) space
+    pairs = []
+    for word in words:                                                          # O(n) time
+        reversed_word = word[::-1]                                              # O(m) time
+        if reversed_word in words_set and reversed_word != word:                # O(1) set and dictionary lookup is O(1)
+            pairs.append([word, reversed_word])                                 # O(1)
+            words_set.remove(word)                                              # O(1) set and dictionary remove is O(1)
+            words_set.remove(reversed_word)                                     # O(1) set and dictionary remove is O(1)
+    return pairs
 
 
-words = ["dog", "hello", "desserts", "test", "god", "stressed"]
+words = ["aaa", "bbbb"]
 semordnilap(words)
