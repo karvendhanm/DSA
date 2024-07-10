@@ -13,15 +13,15 @@
 
 
 # second iteration
-# O(nlog(n)) time | O(1) space
+# O(nlog(n) + mlog(m)) time | O(1) space
 def smallestDifference(arrayOne, arrayTwo):
     arrayOne.sort()                                                                 # O(nlog(n)) time
-    arrayTwo.sort()                                                                 # O(nlog(n)) time
+    arrayTwo.sort()                                                                 # O(nlog(m)) time
 
     _lst = []
     difference = float('inf')
     _idx1, _idx2 = 0, 0
-    while _idx1 <= len(arrayOne) - 1 and _idx2 <= len(arrayTwo) - 1:                # O(n) time
+    while _idx1 <= len(arrayOne) - 1 and _idx2 <= len(arrayTwo) - 1:                # O(n + m) time
         if abs(arrayOne[_idx1] - arrayTwo[_idx2]) < difference:
             difference = abs(arrayOne[_idx1] - arrayTwo[_idx2])
             _lst = [arrayOne[_idx1], arrayTwo[_idx2]]
