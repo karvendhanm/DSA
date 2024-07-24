@@ -25,39 +25,66 @@
 
 # second iteration
 # O(n) time | O(1) space
+# def longestPeak(array):
+#     # Write your code here.
+#     # finding peaks
+#     # peaks is a numbers with a strictly smaller number preceding as well as succeeding it,
+#     peakLength = 0
+#     _idx = 1
+#     while _idx < len(array) - 1:
+#         if array[_idx] > array[_idx - 1] and array[_idx] > array[_idx + 1]:
+#             peak = _idx
+#
+#             # when a peak is found, establish the peak length
+#             # establish the starting point of the peak by going backwards
+#             peakStartingIndex = -1
+#             while _idx >= 1 and array[_idx] > array[_idx - 1]:
+#                 peakStartingIndex = _idx - 1
+#                 _idx -= 1
+#             _idx = peak
+#
+#             # establish the ending point of a peak
+#             peakEndingIndex = -1
+#             while _idx <= len(array) - 2 and array[_idx] > array[_idx + 1]:
+#                 peakEndingIndex = _idx + 1
+#                 _idx += 1
+#
+#             # two peaks could have a overlap of one number
+#             _idx -= 1
+#
+#             if (peakEndingIndex - peakStartingIndex + 1) > peakLength:
+#                 peakLength = peakEndingIndex - peakStartingIndex + 1
+#
+#         _idx += 1
+#
+#     return peakLength
+
+
+# third iteration
+# O(n) time | O(1) space
 def longestPeak(array):
     # Write your code here.
-    # finding peaks
-    # peaks is a numbers with a strictly smaller number preceding as well as succeeding it,
-    peakLength = 0
     _idx = 1
+    longestPeakLength = 0
     while _idx < len(array) - 1:
-        if array[_idx] > array[_idx - 1] and array[_idx] > array[_idx + 1]:
-            peak = _idx
+        isPeak = array[_idx - 1] < array[_idx] > array[_idx + 1]
+        if not isPeak:
+            _idx += 1
+            continue
 
-            # when a peak is found, establish the peak length
-            # establish the starting point of the peak by going backwards
-            peakStartingIndex = -1
-            while _idx >= 1 and array[_idx] > array[_idx - 1]:
-                peakStartingIndex = _idx - 1
-                _idx -= 1
-            _idx = peak
+        # traversing to the left of the peak
+        leftIdx = _idx - 2
+        while leftIdx >= 0 and array[leftIdx] < array[leftIdx + 1]:
+            leftIdx -= 1
+        rightIdx = _idx + 2
+        while rightIdx < len(array) and array[rightIdx] < array[rightIdx - 1]:
+            rightIdx += 1
 
-            # establish the ending point of a peak
-            peakEndingIndex = -1
-            while _idx <= len(array) - 2 and array[_idx] > array[_idx + 1]:
-                peakEndingIndex = _idx + 1
-                _idx += 1
+        currentPeakLength = rightIdx - leftIdx - 1
+        longestPeakLength = max(currentPeakLength, longestPeakLength)
 
-            # two peaks could have a overlap of one number
-            _idx -= 1
-
-            if (peakEndingIndex - peakStartingIndex + 1) > peakLength:
-                peakLength = peakEndingIndex - peakStartingIndex + 1
-
-        _idx += 1
-
-    return peakLength
+        _idx = rightIdx
+    return longestPeakLength
 
 
 array = [1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3]
