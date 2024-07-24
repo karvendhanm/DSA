@@ -31,7 +31,7 @@ def longestPeak(array):
     # peaks is a numbers with a strictly smaller number preceding as well as succeeding it,
     peakLength = 0
     _idx = 1
-    while _idx <= len(array) - 2:
+    while _idx < len(array) - 1:
         if array[_idx] > array[_idx - 1] and array[_idx] > array[_idx + 1]:
             peak = _idx
 
