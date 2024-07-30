@@ -22,3 +22,15 @@ def firstDuplicateValue(array):
         else:
             duplicates.add(elem)
     return -1
+
+
+# third iteration
+# O(n) time | O(n) space
+def firstDuplicateValue(array):
+    # Write your code here.
+    duplicates = {}
+    for elem in array:
+        if duplicates.get(elem):    # get will return None if the elem is not found in the dictionary.
+            return elem
+        duplicates[elem] = True
+    return -1
