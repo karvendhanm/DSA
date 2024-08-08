@@ -58,3 +58,24 @@ def mergeOverlappingIntervals(intervals):
             result.append(interval)
 
     return result
+
+
+# third iteration
+# O(n log(n)) time | O(n) space.
+def mergeOverlappingIntervals(intervals):
+    # Write your code here.
+    intervals.sort(key=lambda x: x[0])
+    mergedIntervals = []
+    currentInterval = intervals[0]
+    mergedIntervals.append(currentInterval)
+
+    for nextInterval in intervals:
+        _, currentIntervalEnd = currentInterval
+        nextIntervalStart, nextIntervalEnd = nextInterval
+
+        if currentIntervalEnd >= nextIntervalStart:
+            currentInterval[1] = max(currentIntervalEnd, nextIntervalEnd)
+        else:
+            mergedIntervals.append(nextInterval)
+            currentInterval = nextInterval
+    return mergedIntervals
