@@ -1,16 +1,25 @@
+# first iteration
 def mergeOverlappingIntervals(intervals):
     # Write your code here.
-    mergedInterval = []
+    mergedArray = []
     currentPrimaryIdx, currentSecondaryIdx = 0, 1
     while len(intervals):
-        if checkOverlap(intervals[currentPrimaryIdx], intervals[currentSecondaryIdx]):
-            mergedArray = mergeIntervals(intervals[currentPrimaryIdx], intervals[currentSecondaryIdx])
-            intervals.remove(intervals[currentPrimaryIdx])
-            intervals.remove(intervals[currentSecondaryIdx])
+        if len(intervals) > 1 and checkOverlap(intervals[currentPrimaryIdx], intervals[currentSecondaryIdx]):
+            Array = mergeIntervals(intervals[currentPrimaryIdx], intervals[currentSecondaryIdx])
+            intervals = [interval for interval in intervals if interval != intervals[currentPrimaryIdx]
+                         and interval != intervals[currentSecondaryIdx]]
             currentPrimaryIdx, currentSecondaryIdx = 0, 1
-            mergedInterval.append(mergedArray)
+            intervals.append(Array)
+            continue
+
+        if currentSecondaryIdx >= len(intervals) - 1:
+            mergedArray.append(intervals[currentPrimaryIdx])
+            intervals.remove(intervals[currentPrimaryIdx])
+            currentPrimaryIdx, currentSecondaryIdx = 0, 0
+
         currentSecondaryIdx += 1
-    return mergedInterval
+
+    return mergedArray
 
 
 def checkOverlap(array1, array2):
@@ -21,6 +30,9 @@ def checkOverlap(array1, array2):
 
 
 def mergeIntervals(array1, array2):
+    if array1 == array2:
+        return array1
+
     startNum = array1[0]
     if array2[0] < array1[0]:
         startNum = array2[0]
