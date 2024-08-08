@@ -42,3 +42,19 @@ def mergeIntervals(array1, array2):
         endNum = array1[1]
 
     return [startNum, endNum]
+
+
+# second iteration
+# O(n log(n)) time | O(n) space.
+def mergeOverlappingIntervals(intervals):
+    # Write your code here.
+    intervals.sort(key=lambda x: x[0])                                  # O(nlog(n))    time
+    result = [intervals[0]]                                             # O(n) space
+
+    for interval in intervals[1:]:
+        if result[-1][1] >= interval[0]:
+            result[-1][1] = max(result[-1][1], interval[1])
+        else:
+            result.append(interval)
+
+    return result
