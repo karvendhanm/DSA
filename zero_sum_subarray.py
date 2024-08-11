@@ -14,21 +14,34 @@
 
 
 # second iteration
+# O(n^2) time | O(n) space
+# def zeroSumSubarray(nums):
+#     # Write your code here.
+#     sumArray = []
+#     sum = 0
+#     for elem in nums:
+#         sum += elem
+#         if sum == 0:
+#             return True
+#         sumArray.append(sum)
+#
+#     for _idx, elem in enumerate(sumArray):
+#         if elem in sumArray[_idx+1:]:
+#             return True
+#
+#     return False
+
+
+# third iteration
 # O(n) time | O(n) space
 def zeroSumSubarray(nums):
-    # Write your code here.
-    sumArray = []
+    sumArray = {}
     sum = 0
-    for elem in nums:
+    for _idx, elem in enumerate(nums):
         sum += elem
-        if sum == 0:
+        if sum == 0 or sum in sumArray:
             return True
-        sumArray.append(sum)
-
-    for _idx, elem in enumerate(sumArray):
-        if elem in sumArray[_idx+1:]:
-            return True
-
+        sumArray[sum] = _idx
     return False
 
 
