@@ -35,15 +35,15 @@
 # third iteration
 # O(n) time | O(n) space
 def zeroSumSubarray(nums):
-    sumArray = {}
+    sumArray = {0}
     sum = 0
     for _idx, elem in enumerate(nums):
         sum += elem
-        if sum == 0 or sum in sumArray:
+        if sum in sumArray:
             return True
-        sumArray[sum] = _idx
+        sumArray.add(sum)
     return False
 
 
-nums = [-5, -5, 2, 3, -2]
+nums = [2, 3, 4, -5, -3, 5, 5]
 zeroSumSubarray(nums)
