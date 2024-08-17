@@ -23,12 +23,8 @@ def missingNumbers(nums):
     # one below the average.
     avgDiff = (nNumSum - numsSum)//2
 
-    nNumBeforeAvgSum, nNumAfterAvgSum = 0, 0
-    for i in nNumArr:
-        if i <= avgDiff:
-            nNumBeforeAvgSum += i
-        else:
-            nNumAfterAvgSum += i
+    nNumBeforeAvgSum = sum(range(1, avgDiff + 1))
+    nNumAfterAvgSum = sum(range(avgDiff + 1, _length))
 
     for i in nums:
         if i <= avgDiff:
