@@ -1,3 +1,5 @@
+# note: this problem also has a bitwise operator solution.
+
 # first iteration
 # O(n^2) time | O(1) space
 # def majorityElement(array):

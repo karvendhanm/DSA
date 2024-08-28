@@ -1,3 +1,5 @@
+# note: this problem also has a bitwise operator solution.
+
 # O(n) time | O(n) space
 # def missingNumbers(nums):
 #     # Write your code here.
