@@ -39,6 +39,29 @@ def majorityElement(array):
         return array[startPointer]
 
 
+# third iteration
+# refactoring the code
+# O(n) time | O(1) space
+def majorityElement(array):
+    # Write your code here.
+    _idx, startPointer = 1, 0
+    score = 1
+    while _idx < len(array):
+        if array[_idx] == array[startPointer]:
+            score += 1
+        else:
+            score -= 1
+
+        _idx += 1
+
+        if score == 0:
+            startPointer = _idx
+            score = 1
+            _idx = _idx + 1
+    if score > 0:
+        return array[startPointer]
+
+
 array = [1, 2, 3, 2, 2, 1, 2]
 majorityElement(array)
 
