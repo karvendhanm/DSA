@@ -23,45 +23,63 @@
 
 # second iteration
 # O(n) time | O(1) space
-def majorityElement(array):
-    # Write your code here.
-    _idx, startPointer = 0, 0
-    score = 0
-    while _idx < len(array):
-        if array[_idx] == array[startPointer]:
-            score += 1
-        else:
-            score -= 1
+# def majorityElement(array):
+#     # Write your code here.
+#     _idx, startPointer = 0, 0
+#     score = 0
+#     while _idx < len(array):
+#         if array[_idx] == array[startPointer]:
+#             score += 1
+#         else:
+#             score -= 1
+#
+#         _idx += 1
+#
+#         if score == 0:
+#             startPointer = _idx
+#     if score > 0:
+#         return array[startPointer]
+#
+#
+# # third iteration
+# # refactoring the code
+# # O(n) time | O(1) space
+# def majorityElement(array):
+#     # Write your code here.
+#     _idx, startPointer = 1, 0
+#     score = 1
+#     while _idx < len(array):
+#         if array[_idx] == array[startPointer]:
+#             score += 1
+#         else:
+#             score -= 1
+#
+#         _idx += 1
+#
+#         if score == 0:
+#             startPointer = _idx
+#             score = 1
+#             _idx = _idx + 1
+#     if score > 0:
+#         return array[startPointer]
 
-        _idx += 1
 
-        if score == 0:
-            startPointer = _idx
-    if score > 0:
-        return array[startPointer]
-
-
-# third iteration
-# refactoring the code
+# fourth iteration
 # O(n) time | O(1) space
 def majorityElement(array):
     # Write your code here.
-    _idx, startPointer = 1, 0
-    score = 1
-    while _idx < len(array):
-        if array[_idx] == array[startPointer]:
-            score += 1
+    count = 0
+    answer = None
+    for value in array:
+        if count == 0:
+            answer = value
+
+        if value == answer:
+            count += 1
         else:
-            score -= 1
+            count -= 1
 
-        _idx += 1
-
-        if score == 0:
-            startPointer = _idx
-            score = 1
-            _idx = _idx + 1
-    if score > 0:
-        return array[startPointer]
+    return answer
 
 
 array = [1, 2, 3, 2, 2, 1, 2]
