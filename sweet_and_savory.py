@@ -1,5 +1,5 @@
 # first iteration
-# O(n^2) time | O(1) space
+# O(n^2) time | O(n) space
 def sweetAndSavory(dishes, target):
     # Write your code here.
     sweets, savouries = [], []
