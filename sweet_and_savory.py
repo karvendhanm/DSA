@@ -1,27 +1,36 @@
+# first iteration
+# O(n^2) time | O(1) space
 def sweetAndSavory(dishes, target):
     # Write your code here.
-    sweets = []
-    savouries = []
+    sweets, savouries = [], []
+    # this for costs O(n) in time complexity.
     for dish in dishes:
         if dish < 0:
             sweets.append(dish)
         else:
             savouries.append(dish)
 
+    best_combination = [0, 0]
     if not len(sweets) or not len(savouries):
-        return [0, 0]
+        return best_combination
 
+    # sorting costs O(n log(n)) in time complexity.
     sweets.sort()
     savouries.sort()
 
-    best_combination = None
-    sweet_idx, savoury_idx = 0, 0
-    while sweet_idx < len(sweets) & savoury_idx < len(savouries):
-        combination_target = sweets[sweet_idx] + savoury_idx[savoury_idx]
-        if combination_target > target:
-            print('the dish is too savoury w.r.t target')
-
-    return []
+    # this double for loop costs O(n^2) time
+    for savory in savouries:
+        for sweet in sweets:
+            combination_score = savory + sweet
+            if combination_score <= target:
+                if best_combination == [0, 0]:
+                    best_combination = [sweet, savory]
+                    continue
+                _left = target - combination_score
+                _right = target - sum(best_combination)
+                if _left < _right:
+                    best_combination = [sweet, savory]
+    return best_combination
 
 
 dishes = [2, 5, -4, -7, 12, 100, -25]
