@@ -24,6 +24,7 @@ class BST:
         return self
 
 
+# O(n) time and O(n) space
 def inOrderTraverse(tree, array):
     # Write your code here.
     if tree is None:
@@ -37,6 +38,7 @@ def inOrderTraverse(tree, array):
     return array
 
 
+# O(n) time and O(n) space
 def preOrderTraverse(tree, array):
     # Write your code here.
     if tree is None:
@@ -50,6 +52,7 @@ def preOrderTraverse(tree, array):
     return array
 
 
+# O(n) time and O(n) space
 def postOrderTraverse(tree, array):
     # Write your code here.
     if tree is None:
