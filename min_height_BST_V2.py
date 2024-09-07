@@ -1,5 +1,4 @@
 # second iteration
-# O(n) time | O(n) space
 def minHeightBst(array):
 
     if not array:

@@ -19,7 +19,6 @@ def createBST(rootNode, order):
 
 
 # first iteration
-# O(n) time | O(n) space
 def minHeightBst(array):
 
     order = []
