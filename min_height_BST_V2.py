@@ -6,6 +6,7 @@ def minHeightBst(array):
 
     center_elm = len(array) // 2
     rootNode = BST(array[center_elm])
+    # slicing of an index is O(k) time, where k is the size of the index.
     rootNode.left = minHeightBst(array[:center_elm])
     rootNode.right = minHeightBst(array[center_elm + 1:])
 
