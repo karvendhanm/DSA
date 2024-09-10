@@ -23,26 +23,27 @@ class BST:
         return self
 
 
-rootNode = BST(5).insert(4).insert(6).insert(7).insert(5)
+rootNode = BST(5).insert(4).insert(3).insert(6).insert(7).insert(6)
 
 
 def findKthLargestValueInBst(tree, k):
-    temp = findKthLargestValueInBstHelper(tree, k, [])
-    return temp[k-1]
+    """
 
-
-# naive sub-optimal method
-# O(n) time | O(n) space
-def findKthLargestValueInBstHelper(tree, k, arr):
-    # Write your code here.
-    if tree is None or len(arr) >= k:
-        return None
-
-    findKthLargestValueInBstHelper(tree.right, k, arr)
-    arr.append(tree.value)  # constant time operation O(1)
-    findKthLargestValueInBstHelper(tree.left, k, arr)
-
-    return arr
+    :param tree:
+    :param k:
+    :return:
+    """
+    stack = []
+    while True:
+        if tree:
+            stack.append(tree)
+            tree = tree.right
+            continue
+        tree = stack.pop()
+        k -= 1
+        if k == 0:
+            return tree.value
+        tree = tree.left
 
 
 print(findKthLargestValueInBst(rootNode, 5))
