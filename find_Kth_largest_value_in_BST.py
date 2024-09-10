@@ -31,12 +31,11 @@ def findKthLargestValueInBst(tree, k):
     return temp[k-1]
 
 
-
 # naive sub-optimal method
 # O(n) time | O(n) space
 def findKthLargestValueInBstHelper(tree, k, arr):
     # Write your code here.
-    if tree is None:
+    if tree is None or len(arr) > k:
         return None
 
     findKthLargestValueInBstHelper(tree.right, k, arr)
