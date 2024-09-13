@@ -17,6 +17,7 @@ tree.right.left = BT(6)
 tree.right.right = BT(7)
 
 
+# first iteration recursive solution
 # O(n) time | O(d) space
 def invertBinaryTree(tree):
     # Write your code here.
