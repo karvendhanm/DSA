@@ -18,10 +18,25 @@ tree.right.right = BT(7)
 
 
 # second iteration iterative solution
-# O() time | O() space
+# O(n) time | O(n) space
+# at any given time
 def invertBinaryTree(tree):
     # Write your code here.
-    pass
+    if tree is None:
+        return
+
+    stack = [tree]
+
+    while stack:
+        currentNode = stack.pop(0)
+
+        if currentNode is not None:
+            currentNode.left, currentNode.right = currentNode.right, currentNode.left
+
+            stack.append(currentNode.left)
+            stack.append(currentNode.right)
+
+    return tree
 
 
-invertBinaryTree(tree)
+print(invertBinaryTree(tree))
