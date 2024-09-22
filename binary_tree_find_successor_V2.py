@@ -17,29 +17,43 @@ rootNode.left.right = BinaryTree(5, parent=rootNode.left)
 rootNode.right = BinaryTree(3, parent=rootNode)
 
 
-# O(n) time | O(n) space
-# both time and space complexity are not optimal.
+class GetSuccessor(object):
+    def __init__(self, target_node):
+        self.target_node = target_node
+        self.flag = 0
+        self.successor_node = None
+
+    def get_successor_node(self, tree):
+        if tree is not None and self.flag == 1:
+            self.flag = 0
+            self.successor_node = tree
+
+    def is_target_node(self, tree):
+        if self.flag == 0 and self.target_node == tree:
+            self.flag = 1
+
+
+# second iteration
+# O(h + k) time | O(h) space
+# h - height or maximum depth of the tree
+# k - number of nodes visited
 def findSuccessor(tree, node):
     # Write your code here.
-    _lst = []
-    findSuccessorHelper(tree, node, _lst)
-    _idx = _lst.index(node)
-    if _idx + 1 < len(_lst):
-        return _lst[_idx + 1]
-    else:
-        return None
+    successor = GetSuccessor(node)
+    return findSuccessorHelper(tree, node, successor)
 
 
-def findSuccessorHelper(tree, node, _lst):
+def findSuccessorHelper(tree, node, successor):
 
-    if tree is None:
-        return None
+    if tree is None or successor.successor_node is not None:
+        return successor.successor_node
 
-    findSuccessorHelper(tree.left, node, _lst)
-    _lst.append(tree)
-    findSuccessorHelper(tree.right, node, _lst)
+    findSuccessorHelper(tree.left, node, successor)
+    successor.get_successor_node(tree)
+    successor.is_target_node(tree)
+    findSuccessorHelper(tree.right, node, successor)
 
-    return _lst
+    return successor.successor_node
 
 
-print(findSuccessor(rootNode, 5))
+print(findSuccessor(rootNode, rootNode.left.right))
