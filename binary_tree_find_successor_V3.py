@@ -14,6 +14,8 @@ rootNode.left.right.right = BinaryTree(7, parent=rootNode.left.right)
 rootNode.left.right.right.right = BinaryTree(9, parent=rootNode.left.right.right)
 rootNode.left.right.right.left = BinaryTree(8, parent=rootNode.left.right.right)
 rootNode.left.right.left = BinaryTree(6, parent=rootNode.left.right)
+rootNode.left.right.left.left = BinaryTree(10, parent=rootNode.left.right.left)
+rootNode.left.right.left.right = BinaryTree(11, parent=rootNode.left.right.left)
 rootNode.left.left = BinaryTree(4, parent=rootNode.left)
 
 # right
@@ -32,6 +34,7 @@ def getLeftMostChild(node):
 def getRightMostParent(node):
 
     currentNode = node
+    # this is beautiful concept.
     while currentNode.parent is not None and currentNode == currentNode.parent.right:
         currentNode = currentNode.parent
 
@@ -50,4 +53,4 @@ def findSuccessor(tree, node):
     return getRightMostParent(node)
 
 
-obj = findSuccessor(rootNode, rootNode.left.right.right.right)
+obj = findSuccessor(rootNode, rootNode.left.right.left.right)
