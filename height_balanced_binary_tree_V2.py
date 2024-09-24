@@ -20,6 +20,7 @@ rootNode.right.right.left = BinaryTree(9)
 rootNode.right.right.left.left = BinaryTree(10)
 # rootNode.right.right.right = BinaryTree(10)
 
+
 class BalancedBinaryTree(object):
     def __init__(self, flag):
         self.flag = flag
