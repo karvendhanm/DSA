@@ -59,4 +59,21 @@ def mergeBinaryTrees(tree1, tree2):
     return newTree
 
 
+# fifth iteration
+# O(n) and O(h)
+# where n is the number of nodes of the smaller tree
+# where h is the depth/height of the smaller tree
+def mergeBinaryTrees(tree1, tree2):
+    # Write your code here.
+    if tree1 is None or tree2 is None:
+        return tree1 or tree2
+
+    tree1.value += tree2.value
+
+    tree1.left = mergeBinaryTrees(tree1.left, tree2.left)
+    tree1.right = mergeBinaryTrees(tree1.right, tree2.right)
+
+    return tree1
+
+
 obj = mergeBinaryTrees(tree1, tree2)
