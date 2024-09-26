@@ -60,7 +60,7 @@ def mergeBinaryTrees(tree1, tree2):
 
 
 # fifth iteration
-# O(n) and O(h)
+# O(n) time and O(h) space
 # where n is the number of nodes of the smaller tree
 # where h is the depth/height of the smaller tree
 def mergeBinaryTrees(tree1, tree2):
