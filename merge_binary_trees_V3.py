@@ -28,6 +28,22 @@ tree2.right.right = BinaryTree(6)
 
 
 # third iteration
+# def mergeBinaryTrees(tree1, tree2):
+#     if tree1 is None and tree2 is None:
+#         return None
+#
+#     tree1 = tree1 or BinaryTree(0)
+#     tree2 = tree2 or BinaryTree(0)
+#
+#     tree1.left = mergeBinaryTrees(tree1.left, tree2.left)
+#     tree1.right = mergeBinaryTrees(tree1.right, tree2.right)
+#
+#     tree1.value += tree2.value
+#
+#     return tree1
+
+
+# fourth iteration
 def mergeBinaryTrees(tree1, tree2):
     if tree1 is None and tree2 is None:
         return None
@@ -35,12 +51,12 @@ def mergeBinaryTrees(tree1, tree2):
     tree1 = tree1 or BinaryTree(0)
     tree2 = tree2 or BinaryTree(0)
 
-    tree1.left = mergeBinaryTrees(tree1.left, tree2.left)
-    tree1.right = mergeBinaryTrees(tree1.right, tree2.right)
+    newTree = BinaryTree(tree1.value + tree2.value)
 
-    tree1.value += tree2.value
+    newTree.left = mergeBinaryTrees(tree1.left, tree2.left)
+    newTree.right = mergeBinaryTrees(tree1.right, tree2.right)
 
-    return tree1
+    return newTree
 
 
 obj = mergeBinaryTrees(tree1, tree2)
