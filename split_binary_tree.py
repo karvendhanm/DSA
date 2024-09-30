@@ -31,7 +31,6 @@ tree.right = BinaryTree(2)
 tree.right.right = BinaryTree(-5)
 
 
-# first iteration
 def splitBinaryTreeHelper(tree, _lst):
     if tree is None:
         return 0
@@ -45,12 +44,14 @@ def splitBinaryTreeHelper(tree, _lst):
     return tot_val
 
 
+# first iteration
+# O(n) time | O(n) space
 def splitBinaryTree(tree):
     # Write your code here.
     _lst = []
     splitBinaryTreeHelper(tree, _lst)
     max_elem = _lst[-1]
-    for elem in _lst:
+    for elem in _lst[:-1]:
         if 2 * elem == max_elem:
             return elem
     return 0
