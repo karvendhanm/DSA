@@ -51,7 +51,8 @@ def splitBinaryTree(tree):
     _lst = []
     splitBinaryTreeHelper(tree, _lst)
     max_elem = _lst[-1]
-    for elem in _lst[:-1]:
+    remain_element = set(_lst[:-1])
+    for elem in remain_element:
         if 2 * elem == max_elem:
             return elem
     return 0
