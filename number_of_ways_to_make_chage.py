@@ -12,6 +12,28 @@ def numberOfWaysToMakeChange(n, denoms,):
     return ways[n]
 
 
+def computeCombinations(n, denoms, cache):
+    if n == 0:
+        return 1
+    if n < 0:
+        return 0
+
+    key = (n, tuple(denoms))
+
+    if key not in cache:
+        count = 0
+        for i in range(len(denoms)):
+            count += computeCombinations(n - denoms[i], denoms[i:], cache)
+        cache[key] = count
+
+    return cache[key]
+
+
+def numberOfWaysToMakeChange(n, denoms):
+    cache = {}
+    return computeCombinations(n, denoms, cache)
+
+
 n = 10
 denoms = [1, 5, 10, 25]
 
