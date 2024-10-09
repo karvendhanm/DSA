@@ -17,6 +17,20 @@ def minNumberOfCoinsForChange(n, denoms):
     return ways[n]
 
 
+# second iteration
+# O(n * d) time | O(n) space
+# where n is the amount, and d is the number of coin denominations.
+def minNumberOfCoinsForChange(n, denoms):
+    # Write your code here.
+    ways = [float('inf') for _ in range(n + 1)]
+    ways[0] = 0
+
+    for denom in denoms:
+        for amount in range(denom, n+1):
+            ways[amount] = min(ways[amount], ways[amount-denom] + 1)
+    return ways[n] if ways[n] != float('inf') else -1
+
+
 n = 10
 denoms = [1, 3, 4]
 
