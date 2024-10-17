@@ -19,5 +19,17 @@ def kadanesAlgorithm(array):
     return max_sum
 
 
+# second iteration
+# O(n) time | O(1) space
+def kadanesAlgorithm(array):
+    # solving the same problem using dynamic programming
+    maxEndingHere = array[0]
+    maxSoFar = array[0]
+    for i in range(1, len(array)):
+        maxEndingHere = max(maxEndingHere + array[i], array[i])
+        maxSoFar = max(maxSoFar, maxEndingHere)
+    return maxSoFar
+
+
 array = [-10, -2, -9, -4, -8, -6, -7, -1, -3, -5]
 print(kadanesAlgorithm(array))
