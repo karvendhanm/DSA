@@ -4,10 +4,9 @@ def hasSingleCycle(array):
     # Write your code here.
     arr_length = len(array)
     flags = [0 for x in range(arr_length)]
-    winder = arr_length
 
     pos = 0
-    while winder > 0:
+    for _ in range(arr_length):
         pos += array[pos]
 
         if pos > arr_length - 1:
@@ -21,7 +20,6 @@ def hasSingleCycle(array):
             return False
 
         flags[pos] += 1
-        winder -= 1
 
     if sum(flags) == arr_length:
         return True
