@@ -9,14 +9,10 @@ def hasSingleCycle(array):
     for _ in range(arr_length):
         pos += array[pos]
         pos = pos % arr_length
-
-        if not 0 <= pos <= arr_length - 1 or flags[pos] == 1:
-            return False
-
         flags[pos] += 1
 
     return all(num == 1 for num in flags)
 
 
-array = []
+array = [2, 3, 1, -4, -4, 2]
 hasSingleCycle(array)
