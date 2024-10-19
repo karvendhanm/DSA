@@ -29,5 +29,21 @@ def hasSingleCycle(array):
     return jumps == arr_length
 
 
+# third iteration
+# O(n) time | O(1) space
+def hasSingleCycle(array):
+    numElementsVisited = 0
+    currentIdx = 0
+
+    while numElementsVisited < len(array):
+        if numElementsVisited > 0 and currentIdx == 0:
+            return False
+
+        numElementsVisited += 1
+        currentIdx = (currentIdx + array[currentIdx]) % len(array)
+
+    return currentIdx == 0
+
+
 array = [2, 3, 1, -4, -4, 2]
 hasSingleCycle(array)
