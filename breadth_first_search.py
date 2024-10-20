@@ -10,15 +10,17 @@ class Node:
 
 
     # first iteration
-    # O(n) time | O(n) space
+    # O(V + E) time | O(V) space
+    # where V is the number of vertices (vertices is nothing but nodes) and
+    # E is the number of edges.
     def breadthFirstSearch(self, array):
         # Write your code here.
-        _arr = [self]
+        queue = [self]
 
-        while _arr:
-            obj = _arr.pop(0)
-            array.append(obj.name)
-            _arr.extend(obj.children)
+        while queue:
+            current = queue.pop(0)
+            array.append(current.name)
+            queue.extend(current.children)
         return array
 
 
