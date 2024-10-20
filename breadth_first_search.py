@@ -13,8 +13,7 @@ class Node:
     # O(n) time | O(n) space
     def breadthFirstSearch(self, array):
         # Write your code here.
-        _arr = []
-        _arr.append(self)
+        _arr = [self]
 
         while _arr:
             obj = _arr.pop(0)
