@@ -38,7 +38,8 @@ def bringUpthelevel(descendant, level):
 
 
 # iteration 2
-# O(n) time and O(1) space
+# O(n) time and O(1) space - worst case
+# O(D) time and O(1) space where D is the depth of the lowest node.
 def getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo):
     # bringing both the descendandants to the same level
     if descendantOne == topAncestor or descendantTwo == topAncestor:
@@ -56,15 +57,12 @@ def getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo):
         # O(n) time | O(1) space - worst case
         descendantTwo = bringUpthelevel(descendantTwo, levelTwo - levelOne)
 
-    if descendantOne == descendantTwo:
-        return descendantOne
-
     # O(n) time | O(1) space - worst case
     while descendantOne != descendantTwo:
         descendantOne = descendantOne.ancestor
         descendantTwo = descendantTwo.ancestor
-        if descendantOne == descendantTwo:
-            return descendantOne
+
+    return descendantOne
 
 
 top_ancestor = AncestralTree("A")
@@ -94,4 +92,5 @@ tree_I.ancestor = tree_D
 
 obj = getYoungestCommonAncestor(top_ancestor, tree_E, tree_I)
 print(obj.name)
+
 
