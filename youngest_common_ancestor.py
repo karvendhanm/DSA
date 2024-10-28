@@ -6,6 +6,7 @@ class AncestralTree:
 
 
 # iteration 1 - suboptimal time complexity
+# O(n^2) time and O(1) space
 def getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo):
     # Write your code here.
     if descendantOne == topAncestor or descendantTwo == topAncestor:
@@ -20,6 +21,50 @@ def getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo):
             currentSecondAncestor = currentSecondAncestor.ancestor
         currentFirstAncestor = currentFirstAncestor.ancestor
     return topAncestor
+
+
+def getDescendantLevel(topAncestor, descendant):
+    level = 0
+    while descendant != topAncestor:
+        level += 1
+        descendant = descendant.ancestor
+    return level
+
+
+def bringUpthelevel(descendant, level):
+    for i in range(level):
+        descendant = descendant.ancestor
+    return descendant
+
+
+# iteration 2
+# O(n) time and O(1) space
+def getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo):
+    # bringing both the descendandants to the same level
+    if descendantOne == topAncestor or descendantTwo == topAncestor:
+        return topAncestor
+
+    # O(n) time | O(1) space - worst case
+    levelOne = getDescendantLevel(topAncestor, descendantOne)
+    # O(n) time | O(1) space - worst case
+    levelTwo = getDescendantLevel(topAncestor, descendantTwo)
+
+    if levelOne > levelTwo:
+        # O(n) time | O(1) space - worst case
+        descendantOne = bringUpthelevel(descendantOne, levelOne-levelTwo)
+    elif levelTwo > levelOne:
+        # O(n) time | O(1) space - worst case
+        descendantTwo = bringUpthelevel(descendantTwo, levelTwo - levelOne)
+
+    if descendantOne == descendantTwo:
+        return descendantOne
+
+    # O(n) time | O(1) space - worst case
+    while descendantOne != descendantTwo:
+        descendantOne = descendantOne.ancestor
+        descendantTwo = descendantTwo.ancestor
+        if descendantOne == descendantTwo:
+            return descendantOne
 
 
 top_ancestor = AncestralTree("A")
@@ -49,3 +94,4 @@ tree_I.ancestor = tree_D
 
 obj = getYoungestCommonAncestor(top_ancestor, tree_E, tree_I)
 print(obj.name)
+
