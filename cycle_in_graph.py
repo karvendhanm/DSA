@@ -1,6 +1,6 @@
 # first iteration
-# O(e * n) time | O(n) space
-# where n is the number of nodes/vertices in the graph
+# O(e * v) time | O(v) space
+# where v is the number of nodes/vertices in the graph
 # and e is the number of edges
 def cycleInGraph(edges):
     # Write your code here.
