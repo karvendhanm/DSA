@@ -15,7 +15,7 @@ class MinHeap:
             ParentNodeIndex -= 1
         return array
 
-    # O(log n) time | O(1) space
+    # O(log n) time | O(log n) space
     def siftDown(self, array, idx):
         # Write your code here.
 
