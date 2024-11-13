@@ -64,19 +64,27 @@ class MinHeap:
             idx = smallChildIndex
 
 
+    # O(log n) time | O(log n) space
+    # def siftUp(self, array, idx):
+    #     # Write your code here.
+    #     parentNodeIdx = ((idx - 1) // 2) if ((idx - 1) // 2) >= 0 else -1
+    #
+    #     if parentNodeIdx == -1:
+    #         return
+    #
+    #     if array[idx] < array[parentNodeIdx]:
+    #         array[idx], array[parentNodeIdx] = array[parentNodeIdx], array[idx]
+    #         self.siftUp(array, parentNodeIdx)
+    #
+    #     return
+
     # O(log n) time | O(1) space
     def siftUp(self, array, idx):
-        # Write your code here.
-        parentNodeIdx = ((idx - 1) // 2) if ((idx - 1) // 2) >= 0 else -1
-
-        if parentNodeIdx == -1:
-            return
-
-        if array[idx] < array[parentNodeIdx]:
-            array[idx], array[parentNodeIdx] = array[parentNodeIdx], array[idx]
-            self.siftUp(array, parentNodeIdx)
-
-        return
+        parentIdx = (idx - 1) // 2
+        while parentIdx >= 0 and array[idx] < array[parentIdx]:
+            array[idx], array[parentIdx] = array[parentIdx], array[idx]
+            idx = parentIdx
+            parentIdx = (idx - 1) // 2
 
     # O(1) time | O(1) space
     def peek(self):
