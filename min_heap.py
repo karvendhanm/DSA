@@ -16,29 +16,53 @@ class MinHeap:
         return array
 
     # O(log n) time | O(log n) space
+    # def siftDown(self, array, idx):
+    #     # Write your code here.
+    #
+    #     childPos = (2 * idx) + 1
+    #     childOneIndex = childPos if childPos <= len(array) - 1 else -1
+    #     childTwoIndex = (childPos + 1) if (childPos + 1) <= len(array) - 1 else -1
+    #
+    #     if childOneIndex == -1:
+    #         return
+    #
+    #     if childTwoIndex == -1:
+    #         if array[childOneIndex] < array[idx]:
+    #             array[childOneIndex], array[idx] = array[idx], array[childOneIndex]
+    #             self.siftDown(array, childOneIndex)
+    #     else:
+    #         if array[childOneIndex] <= array[childTwoIndex] and array[childOneIndex] < array[idx]:
+    #             array[childOneIndex], array[idx] = array[idx], array[childOneIndex]
+    #             self.siftDown(array, childOneIndex)
+    #         elif array[childTwoIndex] <= array[childOneIndex] and array[childTwoIndex] < array[idx]:
+    #             array[childTwoIndex], array[idx] = array[idx], array[childTwoIndex]
+    #             self.siftDown(array, childTwoIndex)
+    #
+    #     return
+
+    # O(log n) time | O(1) time
     def siftDown(self, array, idx):
         # Write your code here.
+        length = len(array)
 
-        childPos = (2 * idx) + 1
-        childOneIndex = childPos if childPos <= len(array) - 1 else -1
-        childTwoIndex = (childPos + 1) if (childPos + 1) <= len(array) - 1 else -1
+        while True:
+            childOneIndex = (2 * idx) + 1
+            childTwoIndex = (2 * idx) + 2
 
-        if childOneIndex == -1:
-            return
+            if childOneIndex >= length:
+                break
 
-        if childTwoIndex == -1:
-            if array[childOneIndex] < array[idx]:
-                array[childOneIndex], array[idx] = array[idx], array[childOneIndex]
-                self.siftDown(array, childOneIndex)
-        else:
-            if array[childOneIndex] <= array[childTwoIndex] and array[childOneIndex] < array[idx]:
-                array[childOneIndex], array[idx] = array[idx], array[childOneIndex]
-                self.siftDown(array, childOneIndex)
-            elif array[childTwoIndex] <= array[childOneIndex] and array[childTwoIndex] < array[idx]:
-                array[childTwoIndex], array[idx] = array[idx], array[childTwoIndex]
-                self.siftDown(array, childTwoIndex)
+            if childTwoIndex < length and array[childTwoIndex] < array[childOneIndex]:
+                smallChildIndex = childTwoIndex
+            else:
+                smallChildIndex = childOneIndex
 
-        return
+            if array[smallChildIndex] >= array[idx]:
+                break
+
+            array[smallChildIndex], array[idx] = array[idx], array[smallChildIndex]
+            idx = smallChildIndex
+
 
     # O(log n) time | O(1) space
     def siftUp(self, array, idx):
