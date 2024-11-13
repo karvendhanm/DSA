@@ -59,14 +59,14 @@ class MinHeap:
         # Write your code here.
         return self.heap[0]
 
-    # O(n) time | O(1) space
+    # O(log n) time | O(1) space
     def remove(self):
         # Write your code here.
         # removing the minimum element in the min. heap
         heapLength = len(self.heap)
         self.heap[0], self.heap[heapLength - 1] = self.heap[heapLength - 1], self.heap[0]
         removedElement = self.heap.pop()
-        self.buildHeap(self.heap)
+        self.siftDown(self.heap, 0)
         return removedElement
 
     # O(log n) time | O(1) space
