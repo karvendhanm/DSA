@@ -5,34 +5,28 @@ class LinkedList:
 
 
 # first iteration
-# O(n) time and O(n) space
-# where n is the maximum number of nodes in a linked list.
+# O(n + m) time and O(max(n, m)) space
+# where n is the length of linkedListOne
+# where m is the length of linkedListTwo
 def sumOfLinkedLists(linkedListOne, linkedListTwo):
     # Write your code here.
+
     quotient = 0
-    PermanentLinkedList = NewLinkedList = None
-    while linkedListOne is not None or linkedListTwo is not None or quotient > 0:
-        firstValue = secondValue = 0
-        if linkedListOne:
-            firstValue = linkedListOne.value
-            linkedListOne = linkedListOne.next
+    currentNode = dummyHead = LinkedList(0)
+    while linkedListOne or linkedListTwo or quotient:
+        firstValue = linkedListOne.value if linkedListOne else 0
+        secondValue = linkedListTwo.value if linkedListTwo else 0
 
-        if linkedListTwo:
-            secondValue = linkedListTwo.value
-            linkedListTwo = linkedListTwo.next
+        totalValue = firstValue + secondValue + quotient
+        quotient, remainder = divmod(totalValue, 10)
 
-        currentSum = quotient + firstValue + secondValue
-        remainder = currentSum % 10
-        quotient = currentSum // 10
+        currentNode.next = LinkedList(remainder)
+        currentNode = currentNode.next
 
-        if NewLinkedList:
-            NewLinkedList.next = LinkedList(remainder)
-            NewLinkedList = NewLinkedList.next
-        else:
-            NewLinkedList = LinkedList(remainder)
-            PermanentLinkedList = NewLinkedList
+        linkedListOne = linkedListOne.next if linkedListOne else None
+        linkedListTwo = linkedListTwo.next if linkedListTwo else None
 
-    return PermanentLinkedList
+    return dummyHead.next
 
 
 node11 = LinkedList(2)
