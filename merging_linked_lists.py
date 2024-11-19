@@ -21,6 +21,25 @@ def mergingLinkedLists(linkedListOne, linkedListTwo):
     return None
 
 
+# second iteration using a set to store the nodes in one of the list
+# O(n + m) time and O(n) space
+# where n is the number of nodes in linkedListOne
+# where m is the number of nodes in linkedListTwo
+def mergingLinkedLists(linkedListOne, linkedListTwo):
+    # Write your code here.
+    set1 = set()
+    while linkedListOne is not None:
+        set1.add(linkedListOne)
+        linkedListOne = linkedListOne.next
+
+    while linkedListTwo is not None:
+        if linkedListTwo in set1:
+            return linkedListTwo
+        linkedListTwo = linkedListTwo.next
+
+    return None
+
+
 node11 = LinkedList(2)
 node12 = LinkedList(4)
 node13 = LinkedList(7)
