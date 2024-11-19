@@ -5,7 +5,7 @@ class LinkedList:
 
 
 # first iteration
-# O(n + m) time and O(max(n, m)) space
+# O(max(n, m)) time and O(max(n, m)) space
 # where n is the length of linkedListOne
 # where m is the length of linkedListTwo
 def sumOfLinkedLists(linkedListOne, linkedListTwo):
