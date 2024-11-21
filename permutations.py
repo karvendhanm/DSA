@@ -7,7 +7,7 @@ def getPermutations(array):
 
 
 def getPermutationsHelper(array, permutation, permutations):
-    if not array:
+    if not array and permutation:
         permutations.append(permutation)
         return
     else:
