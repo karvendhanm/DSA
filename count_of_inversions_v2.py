@@ -43,6 +43,7 @@ def countInversionsHelper(array):
     return sorted_arr, l + r + numInversions
 
 
+# O(n log(n)) time | O(n) space
 def countInversions(array):
     _, count = countInversionsHelper(array)
     return count
