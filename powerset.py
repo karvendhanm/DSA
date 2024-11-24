@@ -30,7 +30,7 @@
 def powerset(array, idx=None):
     if idx is None:
         idx = len(array) - 1
-    elif idx < 0:
+    if idx < 0:
         return [[]]
     ele = array[idx]
     subsets = powerset(array, idx-1)
@@ -39,5 +39,5 @@ def powerset(array, idx=None):
     return subsets
 
 
-array = [1, 2, 3]
+array = []
 print(powerset(array))
