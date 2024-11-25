@@ -39,5 +39,5 @@ def powerset(array, idx=None):
     return subsets
 
 
-array = []
+array = [1, 2, 3]
 print(powerset(array))
