@@ -35,16 +35,38 @@ integer2ButtonLetters = {
 # second iteration
 # iterative solution
 # O(n * 4 ^ n) time | O(n * 4 ^ n) space
+# def phoneNumberMnemonics(phoneNumber):
+#     phoneNumberCharacters = list(phoneNumber)
+#     currentMnemonics = [""]
+#     for character in phoneNumberCharacters:
+#         mnemonics = currentMnemonics
+#         currentMnemonics = []
+#         for mnemonic in mnemonics:
+#             for letter in integer2ButtonLetters.get(character):
+#                 currentMnemonics.append(mnemonic + letter)
+#     return currentMnemonics
+
+
+# third iteration, recursive solution
+# O(n * 4 ^ n) time | O(n * 4 ^ n) space
 def phoneNumberMnemonics(phoneNumber):
-    phoneNumberCharacters = list(phoneNumber)
-    currentMnemonics = [""]
-    for character in phoneNumberCharacters:
-        mnemonics = currentMnemonics
-        currentMnemonics = []
-        for mnemonic in mnemonics:
-            for letter in integer2ButtonLetters.get(character):
-                currentMnemonics.append(mnemonic + letter)
-    return currentMnemonics
+    currentMnemonic = ["0"] * len(phoneNumber)
+    mnemonicsFound = []
+
+    phoneNumberMnemonicsHelper(0, phoneNumber, currentMnemonic, mnemonicsFound)
+    return mnemonicsFound
+
+
+def phoneNumberMnemonicsHelper(idx, phoneNumber, currentMnemonic, mnemonicsFound):
+    if idx == len(phoneNumber):
+        mnemonic = "".join(currentMnemonic)
+        mnemonicsFound.append(mnemonic)
+    else:
+        numberAtIndex = phoneNumber[idx]
+        letters = integer2ButtonLetters[numberAtIndex]
+        for letter in letters:
+            currentMnemonic[idx] = letter
+            phoneNumberMnemonicsHelper(idx + 1, phoneNumber, currentMnemonic, mnemonicsFound)
 
 
 phoneNumber = "7777"
