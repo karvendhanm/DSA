@@ -44,21 +44,58 @@
 # the key idea is: there are only maxSteps number of ways to reach the top.
 # if we know the number of ways to reach these steps we can simply add them.
 # O(k * n) time | O(n) space
+# def staircaseTraversal(height, maxSteps):
+#     # Write your code here.
+#     waysToTop = [0 for _ in range(height + 1)]
+#     waysToTop[0] = waysToTop[1] = 1
+#
+#     for currentHeight in range(2, height + 1):
+#         numSteps = 0
+#         for step in range(1, min(currentHeight, maxSteps) + 1):
+#             numSteps += waysToTop[currentHeight - step]
+#         waysToTop[currentHeight] = numSteps
+#
+#     return waysToTop[height]
+
+
+
+# using dynamic programming.
+# the key idea is: there are only maxSteps number of ways to reach the top.
+# if we know the number of ways to reach these steps we can simply add them.
+# O(k * n) time | O(n) space
+# another interesting while loop for the same dynamic programming as listed above.
+# def staircaseTraversal(height, maxSteps):
+#     # Write your code here.
+#     waysToTop = [0 for _ in range(height + 1)]
+#     waysToTop[0] = waysToTop[1] = 1
+#
+#     for currentHeight in range(2, height + 1):
+#         step = 1
+#         while step <= maxSteps and step <= currentHeight:
+#             waysToTop[currentHeight] = waysToTop[currentHeight] + waysToTop[currentHeight - step]
+#             step += 1
+#
+#     return waysToTop[height]
+
+
+# sliding window approach
+# O(n) time | O(n) space
 def staircaseTraversal(height, maxSteps):
     # Write your code here.
-    _lst = [0] * (height + 1)
-    _lst[0] = _lst[1] = 1
+    currentNumberOfWays = 0
+    waysToTop = [1]
 
-    for i in range(2, height + 1):
-        numSteps = 0
-        for step in range(1, min(i, maxSteps) + 1):
-            numSteps += _lst[i - step]
-        _lst[i] = numSteps
+    for currentHeight in range(1, height+1):
+        startOfWindow = currentHeight - maxSteps -1
+        endOfWindow = currentHeight - 1
 
-    return _lst[height]
+        if startOfWindow >= 0:
+            currentNumberOfWays -= waysToTop[startOfWindow]
 
+        currentNumberOfWays += waysToTop[endOfWindow]
+        waysToTop.append(currentNumberOfWays)
 
-
+    return waysToTop[height]
 
 
 height = 5
