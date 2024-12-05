@@ -14,7 +14,8 @@ def getEligibleadjacentCells(rowIndex, colIndex, board):
 
 
 # first iteration
-# O() space | O() time
+# O(w * h) space | O(w * h) time
+# where w is the width of the board and h is the height of the board
 def revealMinesweeper(board, row, column):
     # Write your code here.
     # if the player has clicked right on the mine
