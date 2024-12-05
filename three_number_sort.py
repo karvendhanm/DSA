@@ -22,3 +22,8 @@ def threeNumberSort(array, order):
             swap(array, j, _dict)
 
     return array
+
+
+array = [1, 0, 0, -1, -1, 0, 1, 1]
+order = [0, 1, -1]
+threeNumberSort(array, order)
