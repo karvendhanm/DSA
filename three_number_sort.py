@@ -4,11 +4,29 @@ def swap(array, idx, _dict):
 
     if firstNumber > secondNumber:
         array[idx], array[idx - 1] = array[idx - 1], array[idx]
+        return 1
 
-    return
+    return 0
 
 
 # first iteration
+# O(n ^ 2) time | O(1) space
+# sub-optimal time complexity
+# def threeNumberSort(array, order):
+#     # Write your code here.
+#     _dict = {}
+#     for _idx, orderElem in enumerate(order):
+#         _dict[orderElem] = _idx
+#
+#     # implementing bubble sort
+#     for i in range(len(array) - 1):
+#         for j in range(1, len(array) - i):
+#             swap(array, j, _dict)
+#
+#     return array
+
+
+# second iteration
 # O(n ^ 2) time | O(1) space
 # sub-optimal time complexity
 def threeNumberSort(array, order):
@@ -17,10 +35,12 @@ def threeNumberSort(array, order):
     for _idx, orderElem in enumerate(order):
         _dict[orderElem] = _idx
 
-    for i in range(len(array) - 1):
-        for j in range(1, len(array)):
-            swap(array, j, _dict)
-
+    # implementing insertion sort
+    for i in range(1, len(array)):
+        while i > 0:
+            if not swap(array, i, _dict):
+                break
+            i -= 1
     return array
 
 
