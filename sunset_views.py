@@ -30,16 +30,30 @@
 
 # second iteration
 # O(n) time | O(n) space
-def sunsetViews(buildings, direction):
-    maxHeight = 0
-    indices = []
-    _range = range(len(buildings)) if direction == 'WEST' else range(len(buildings) - 1, -1, -1)
+# def sunsetViews(buildings, direction):
+#     maxHeight = 0
+#     indices = []
+#     _range = range(len(buildings)) if direction == 'WEST' else range(len(buildings) - 1, -1, -1)
 
-    for buildingIdx in _range:
-        if buildings[buildingIdx] > maxHeight:
-            indices.append(buildingIdx)
-            maxHeight = buildings[buildingIdx]
-    return indices if direction == 'WEST' else indices[::-1]
+#     for buildingIdx in _range:
+#         if buildings[buildingIdx] > maxHeight:
+#             indices.append(buildingIdx)
+#             maxHeight = buildings[buildingIdx]
+#     return indices if direction == 'WEST' else indices[::-1]
+
+
+# third iteration
+# O(n) time | O(n) space
+# using a stack to solve this problem.
+def sunsetViews(buildings, direction):
+    # Write your code here.
+    _range = range(len(buildings)) if direction == 'EAST' else range(len(buildings)-1, -1, -1)
+    stack = []
+    for idx in _range:
+        while stack and buildings[idx] >= buildings[stack[-1]]:
+            stack.pop()
+        stack.append(idx)
+    return stack if direction == 'EAST' else stack[::-1]
 
 
 buildings = [3, 5, 4, 4, 3, 1, 3, 2]
