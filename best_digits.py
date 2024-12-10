@@ -3,7 +3,7 @@
 def bestDigits(number, numDigits):
     canditateNumbers = []
     for i in range(len(number)):
-        while canditateNumbers and int(number[i]) >= int(canditateNumbers[-1]) and numDigits:
+        while canditateNumbers and int(number[i]) > int(canditateNumbers[-1]) and numDigits:
             canditateNumbers.pop()
             numDigits -= 1
         canditateNumbers.append(number[i])
