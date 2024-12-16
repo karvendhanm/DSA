@@ -26,7 +26,7 @@
 
 
 def insertElem(stack, topElem):
-    if not stack or stack[-1] < topElem:
+    if not stack or stack[-1] <= topElem:
         stack.append(topElem)
         return stack
 
@@ -48,7 +48,6 @@ def sortStack(stack):
 
     insertElem(stack, topElem)
     return stack
-
 
 stack = [-5, 2, -2, 4, 3, 1]
 print(sortStack(stack))
