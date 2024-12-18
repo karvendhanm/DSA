@@ -14,18 +14,15 @@ def nextGreaterElement(array):
 
 # second iteration
 # O(n) time | O(n) space
-def nextBigNumber(array):
+def nextGreaterElement(array):
     result = [-1] * len(array)
     stack = []
 
     for i in range(2 * len(array)):
         i = i % len(array)
-        if not stack or array[i] <= array[stack[-1]]:
-            stack.append(i)
-        else:
-            while stack and array[i] > array[stack[-1]]:
-                result[stack.pop()] = array[i]
-            stack.append(i)
+        while stack and array[i] > array[stack[-1]]:
+            result[stack.pop()] = array[i]
+        stack.append(i)
 
     return result
 
