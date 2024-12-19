@@ -57,5 +57,31 @@ def collidingAsteroids(asteroids):
     return stack
 
 
+# third iteration
+# O(n) time and O(n) space
+def collidingAsteroids(asteroids):
+    stack = []
+    for asteroid in asteroids:
+        if asteroid > 0:
+            stack.append(asteroid)
+            continue
+
+        while True:
+            if not stack or stack[-1] < 0:
+                stack.append(asteroid)
+                break
+
+            if stack[-1] == -asteroid:
+                stack.pop()
+                break
+
+            if stack[-1] > -asteroid:
+                break
+
+            stack.pop()
+
+    return stack
+
+
 asteroids = [-3, 5, -8, 6, 7, -4, -7]
 print(collidingAsteroids(asteroids))
