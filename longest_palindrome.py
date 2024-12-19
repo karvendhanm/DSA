@@ -7,13 +7,14 @@ def is_palindrome(string, start_idx, end_idx):
 # O(n^3) time | O(n) space
 def longestPalindromicSubstring(string):
     # Write your code here.
-    longestPalindrome = ""
+    start_idx = end_idx = 0
     for i in range(len(string)):
         for j in range(i, len(string)):
-            if is_palindrome(string, i, j):
-                if (j - i + 1) > len(longestPalindrome):
-                    longestPalindrome = string[i:j+1]
-    return longestPalindrome
+            if string[i] == string[j] and is_palindrome(string, i, j):
+                if (j - i) > (end_idx - start_idx):
+                    start_idx = i
+                    end_idx = j
+    return string[start_idx:end_idx+1]
 
 
 string = 'abaxyzzyxf'
