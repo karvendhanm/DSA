@@ -1,19 +1,23 @@
-def getCombinations(n, r):
+# O(nCr * (r * n)) time | O(nCr * r) space
+# where n is the length of the array
+def getCombinations(array, r):
     combinations = []
-    return getCombinationsHelper(0, n, r, combinations, [])
+    return getCombinationsHelper(array, r, [], combinations)
 
 
-def getCombinationsHelper(i, n, r, combinations, combination):
+def getCombinationsHelper(array, r, combination, combinations):
     if len(combination) == r:
         combinations.append(combination)
         return
 
-    for j in range(i, min(n, i + r + 1)):
-        if any(num >= j for num in combination):
-            continue
-        newCombination = combination + [j]
-        getCombinationsHelper(i + 1, n, r, combinations, newCombination)
+    for idx, elem in enumerate(array):
+        if idx > r:
+            return combinations
+
+        newCombination = combination + [elem]
+        getCombinationsHelper(array[idx+1:], r, newCombination, combinations)
     return combinations
 
 
-getCombinations(5, 4)
+array = []
+print(getCombinations(array, 3))
