@@ -6,14 +6,14 @@ def reverseWordsInString(string):
     strLength = len(string)
     reversedString = []
     EndPosition = strLength - 1
-    previousCharacter = None
+    previousCharacter = ''
     for idx in range(strLength - 1, -1, -1):
-        if idx == 0:
-            rotateString(string, idx, EndPosition, reversedString)
-        elif string[idx] == ' ' and previousCharacter != ' ':
+        if string[idx] == ' ' and previousCharacter != ' ':
             rotateString(string, idx + 1, EndPosition, reversedString)
             reversedString.append(' ')
             EndPosition = idx - 1
+        elif idx == 0:
+            rotateString(string, idx, EndPosition, reversedString)
         elif string[idx] == ' ' and previousCharacter == ' ':
             reversedString.append(' ')
             EndPosition -= 1
