@@ -1,19 +1,18 @@
 # first iteration
+# O(n * m) time | O(c) space
+# where n is the number of words.
+# where m is the length of the longest word.
+# where c is the number of unique letters in all the words in the list "words"
 def minimumCharactersForWords(words):
     # Write your code here.
     overallMinimumCharacters = {}
     for word in words:
         currentMinimumCharacters = {}
         for char in word:
-            if char in currentMinimumCharacters:
-                currentMinimumCharacters[char] += 1
-            else:
-                currentMinimumCharacters[char] = 1
+            currentMinimumCharacters[char] = currentMinimumCharacters.get(char, 0) + 1
         for key in currentMinimumCharacters.keys():
-            if key in overallMinimumCharacters:
-                overallMinimumCharacters[key] = max(overallMinimumCharacters[key], currentMinimumCharacters[key])
-            else:
-                overallMinimumCharacters[key] = currentMinimumCharacters[key]
+            overallMinimumCharacters[key] = max(overallMinimumCharacters.get(key, 0), currentMinimumCharacters[key])
+
     minCharacters = [[key] * value for key, value in overallMinimumCharacters.items()]
     return [elem for lst in minCharacters for elem in lst]
 
