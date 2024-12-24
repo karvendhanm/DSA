@@ -40,29 +40,59 @@
 #     return currentRow[-1] <= 1
 
 
-# third iteration
-# O(n) time | O(1) space
-def oneEdit(stringOne, stringTwo):
-    if len(stringOne) > len(stringTwo):
-        stringOne, stringTwo = stringTwo, stringOne
-    numberofChanges = 0
-    if len(stringOne) == len(stringTwo):
-        # potential replacement scenario
-        for i in range(len(stringTwo)):
-            if stringOne[i] != stringTwo[i]:
-                numberofChanges += 1
-    else:
-        # could be addition or removal scenario
-        if (len(stringTwo) - len(stringOne)) >= 2:
-            return False
+# # third iteration
+# # O(n) time | O(1) space
+# # where n is the length of the larger among the two strings
+# # here n being the length of the larger string is sub-optimal time complexity.
+# def oneEdit(stringOne, stringTwo):
+#     numberOfEdits = 0
+#     if len(stringOne) == len(stringTwo):
+#         # potential replacement scenario
+#         for i in range(len(stringTwo)):
+#             if stringOne[i] != stringTwo[i]:
+#                 numberOfEdits += 1
+#     else:
+#         # potential addition or removal scenario
+#         if len(stringOne) > len(stringTwo):
+#             stringOne, stringTwo = stringTwo, stringOne
+#
+#         i = 0
+#         for j in range(len(stringTwo)):
+#             if i < len(stringOne) and stringOne[i] == stringTwo[j]:
+#                 i += 1
+#             else:
+#                 numberOfEdits += 1
+#     return numberOfEdits <= 1
 
-        i = 0
-        for j in range(len(stringTwo)):
-            if i < len(stringOne) and stringOne[i] == stringTwo[j]:
-                i += 1
+
+# fourth iteration
+# O(n) time | O(1) space
+# where n is the length of the smaller string
+def oneEdit(stringOne, stringTwo):
+    lengthOne = len(stringOne)
+    lengthTwo = len(stringTwo)
+    if abs(lengthOne - lengthTwo) > 1:
+        return False
+
+    indexOne = 0
+    indexTwo = 0
+    madeEdit = False
+    while indexOne < lengthOne and indexTwo < lengthTwo:
+        if stringOne[indexOne] != stringTwo[indexTwo]:
+            if madeEdit:
+                return False
+            madeEdit = True
+            if lengthOne > lengthTwo:
+                indexOne += 1
+            elif lengthTwo > lengthOne:
+                indexTwo += 1
             else:
-                numberofChanges += 1
-    return numberofChanges <= 1
+                indexOne += 1
+                indexTwo += 1
+        else:
+            indexOne += 1
+            indexTwo += 1
+    return True
 
 
 stringOne = "abcd"
