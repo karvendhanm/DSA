@@ -32,18 +32,17 @@
 # second iteration
 # O(n) time | O(1) time
 def subarraySort(array):
-    indices = [-1, -1]
     smallestUnsortedNumber = float('inf')
     largestUnsortedNumber = float('-inf')
     # finding all the unsorted numbers in the array
     for idx in range(len(array)):
-        if idx - 1 >= 0 and array[idx] < array[idx-1]:
-            if array[idx] < smallestUnsortedNumber:
-                smallestUnsortedNumber = array[idx]
+        if (idx - 1 >= 0 and array[idx] < array[idx - 1]) or (idx + 1 < len(array) and array[idx] > array[idx + 1]):
+            smallestUnsortedNumber = min(array[idx], smallestUnsortedNumber)
+            largestUnsortedNumber = max(array[idx], largestUnsortedNumber)
 
-        if idx + 1 < len(array) and array[idx] > array[idx+1]:
-            if array[idx] > largestUnsortedNumber:
-                largestUnsortedNumber = array[idx]
+    indices = [-1, -1]
+    if smallestUnsortedNumber == float('inf'):
+        return indices
 
     for i in range(len(array)):
         if array[i] > smallestUnsortedNumber:
@@ -59,25 +58,3 @@ def subarraySort(array):
 
 array = [1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19]
 print(subarraySort(array))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
