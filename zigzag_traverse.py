@@ -58,45 +58,85 @@ def zigzagTraverse(array):
     return resultArray
 
 
-# O(n) time | O(n) space
-# where n is the total number of elements
-# in the 2-dimensional array (height (h) * width (w))
+# # second iteration
+# # O(n) time | O(n) space
+# # where n is the total number of elements
+# # in the 2-dimensional array (height (h) * width (w))
+# def zigzagTraverse(array):
+#     rowIdx = columnIdx = 0
+#     zigzagArray = [array[rowIdx][columnIdx]]
+#     direction = 'down'
+#     while not (rowIdx == len(array)-1 and columnIdx == len(array[0])-1):
+#         if direction == 'down':
+#             direction = 'up'
+#             while rowIdx + 1 < len(array) and columnIdx - 1 >= 0:
+#                 rowIdx = rowIdx + 1
+#                 columnIdx = columnIdx - 1
+#                 zigzagArray.append(array[rowIdx][columnIdx])
+#             # 2 special cases needs to be handled here for 'down' direction
+#             # case 1: when the indexes are at the 0th column.
+#             # case 2: when the indexes are at the last row.
+#             if rowIdx == len(array)-1 and columnIdx + 1 < len(array[0]):
+#                 columnIdx = columnIdx + 1
+#                 zigzagArray.append(array[rowIdx][columnIdx])
+#             elif columnIdx == 0 and rowIdx < len(array):
+#                 rowIdx = rowIdx + 1
+#                 zigzagArray.append(array[rowIdx][columnIdx])
+#         elif direction == 'up':
+#             direction = 'down'
+#             while rowIdx - 1 >= 0 and columnIdx + 1 < len(array[0]):
+#                 rowIdx = rowIdx - 1
+#                 columnIdx = columnIdx + 1
+#                 zigzagArray.append(array[rowIdx][columnIdx])
+#             # 2 special cases needs to be handled here for 'up' direction
+#             # case 1: when the indexes are at the 0th row.
+#             # case 2: when the indexes are at the last column.
+#             if columnIdx == len(array[0])-1 and rowIdx + 1 < len(array):
+#                 rowIdx = rowIdx + 1
+#                 zigzagArray.append(array[rowIdx][columnIdx])
+#             elif rowIdx == 0 and columnIdx + 1 < len(array[0]):
+#                 columnIdx = columnIdx + 1
+#                 zigzagArray.append(array[rowIdx][columnIdx])
+#     return zigzagArray
+
+
+# # third iteration
+# # O(n) time | O(n) space
+# # where n is the total number of elements
+# # in the 2-dimensional array (height (h) * width (w))
 def zigzagTraverse(array):
-    rowIdx = columnIdx = 0
-    zigzagArray = [array[rowIdx][columnIdx]]
-    direction = 'down'
-    while not (rowIdx == len(array)-1 and columnIdx == len(array[0])-1):
-        if direction == 'down':
-            direction = 'up'
-            while rowIdx + 1 < len(array) and columnIdx - 1 >= 0:
-                rowIdx = rowIdx + 1
-                columnIdx = columnIdx - 1
-                zigzagArray.append(array[rowIdx][columnIdx])
-            # 2 special cases needs to be handled here for 'down' direction
-            # case 1: when the indexes are at the 0th column.
-            # case 2: when the indexes are at the last row.
-            if rowIdx == len(array)-1 and columnIdx + 1 < len(array[0]):
-                columnIdx = columnIdx + 1
-                zigzagArray.append(array[rowIdx][columnIdx])
-            elif columnIdx == 0 and rowIdx < len(array):
-                rowIdx = rowIdx + 1
-                zigzagArray.append(array[rowIdx][columnIdx])
-        elif direction == 'up':
-            direction = 'down'
-            while rowIdx - 1 >= 0 and columnIdx + 1 < len(array[0]):
-                rowIdx = rowIdx - 1
-                columnIdx = columnIdx + 1
-                zigzagArray.append(array[rowIdx][columnIdx])
-            # 2 special cases needs to be handled here for 'up' direction
-            # case 1: when the indexes are at the 0th row.
-            # case 2: when the indexes are at the last column.
-            if columnIdx == len(array[0])-1 and rowIdx + 1 < len(array):
-                rowIdx = rowIdx + 1
-                zigzagArray.append(array[rowIdx][columnIdx])
-            elif rowIdx == 0 and columnIdx + 1 < len(array[0]):
-                columnIdx = columnIdx + 1
-                zigzagArray.append(array[rowIdx][columnIdx])
-    return zigzagArray
+    height = len(array) - 1
+    width = len(array[0]) - 1
+    resultArray = []
+    rowIdx, colIdx = 0, 0
+    goingDown = True
+    while not isOutOfBounds(rowIdx, colIdx, height, width):
+        resultArray.append(array[rowIdx][colIdx])
+        if goingDown:
+            if rowIdx == height or colIdx == 0:
+                goingDown = False
+                if rowIdx == height:
+                    colIdx += 1
+                else:
+                    rowIdx += 1
+            else:
+                rowIdx += 1
+                colIdx -= 1
+        else:
+            if colIdx == width or rowIdx == 0:
+                goingDown = True
+                if colIdx == width:
+                    rowIdx += 1
+                else:
+                    colIdx += 1
+            else:
+                rowIdx -= 1
+                colIdx += 1
+    return resultArray
+
+
+def isOutOfBounds(rowIdx, colIdx, height, width):
+    return rowIdx < 0 or colIdx < 0 or rowIdx > height or colIdx > width
 
 
 array = [
