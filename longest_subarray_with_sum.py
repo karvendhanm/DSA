@@ -35,6 +35,23 @@ def longestSubarrayWithSum(array, targetSum):
     return []
 
 
+# second iteration
+# O(n ^ 2) time | O(1) space
+# naive nested loop solution
+def longestSubarrayWithSum(array, targetSum):
+    # Write your code here.
+    indices = []
+    for startingIdx in range(len(array)):
+        subArraySum = 0
+        for endingIdx in range(startingIdx, len(array)):
+            subArraySum += array[endingIdx]
+
+            if subArraySum == targetSum:
+                if len(indices) == 0 or indices[1] - indices[0] < endingIdx - startingIdx:
+                    indices = [startingIdx, endingIdx]
+    return indices
+
+
 array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
 targetSum = 1
 print(longestSubarrayWithSum(array, targetSum))
