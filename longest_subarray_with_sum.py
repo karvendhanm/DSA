@@ -52,6 +52,32 @@ def longestSubarrayWithSum(array, targetSum):
     return indices
 
 
+# third iteration
+# O(n) time | O(1) space
+# sliding window solution
+# sliding window solution is applicable only because
+# the array only has non-negative elements.
+def longestSubarrayWithSum(array, targetSum):
+    # Write your code here.
+    indices = []
+    startingIdx, endingIdx = 0, 0
+    subArraySum = 0
+    while endingIdx < len(array):
+        subArraySum += array[endingIdx]
+
+        while startingIdx < endingIdx and subArraySum > targetSum:
+            subArraySum -= array[startingIdx]
+            startingIdx += 1
+
+        if subArraySum == targetSum:
+            if len(indices) == 0 or indices[1] - indices[0] < endingIdx - startingIdx:
+                indices = [startingIdx, endingIdx]
+
+        endingIdx += 1
+
+    return indices
+
+
 array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
 targetSum = 1
 print(longestSubarrayWithSum(array, targetSum))
