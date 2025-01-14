@@ -1,6 +1,7 @@
 # first iteration
-# O(n^2) time | O(n) space
+# O(n^2) time | O(n^2) space
 # In each recursion filtering for element in an array < root and >= root adds to time complexity.
+# creating extra arrays leads to additional space complexity.
 def sameBsts(arrayOne, arrayTwo):
     # Write your code here.
     return sameBstsHelper(arrayOne, arrayTwo)
