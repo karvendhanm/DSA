@@ -51,18 +51,24 @@ nodeThree = root.left.right.left
 #     return False
 
 
-def isParentNode(parentNode, childNode):
-    if parentNode is None or childNode is None:
-        return False
+# def isParentNode(parentNode, childNode):
+#     if parentNode is None or childNode is None:
+#         return False
 
-    while parentNode is not None:
-        if parentNode == childNode:
-            return True
-        elif childNode.value < parentNode.value:
-            parentNode = parentNode.left
-        elif childNode.value >= parentNode.value:
-            parentNode = parentNode.right
-    return False
+#     while parentNode is not None:
+#         if parentNode == childNode:
+#             return True
+#         elif childNode.value < parentNode.value:
+#             parentNode = parentNode.left
+#         elif childNode.value >= parentNode.value:
+#             parentNode = parentNode.right
+#     return False
+
+
+def isParentNode(parentNode, childNode):
+    while parentNode is not None and parentNode is not childNode:
+        parentNode = parentNode.left if childNode.value < parentNode.value else parentNode.right
+    return parentNode is childNode
 
 
 # second iteration
