@@ -47,5 +47,32 @@ def repairBst(tree):
     return tree
 
 
+# O(n) time | O(h) space
+# where n is the number of nodes in the BST
+# where h is the height of the BST
+# iterative solution
+def repairBst(tree):
+    # Write your code here.
+    nodeOne, nodeTwo, previousNode = None, None, None
+
+    stack = []
+    currentNode = tree
+    while currentNode is not None or stack:
+        while currentNode is not None:
+            stack.append(currentNode)
+            currentNode = currentNode.left
+        currentNode = stack.pop()
+
+        if previousNode is not None and previousNode.value > currentNode.value:
+            if nodeOne is None:
+                nodeOne = previousNode
+            nodeTwo = currentNode
+        previousNode = currentNode
+
+        currentNode = currentNode.right
+    nodeOne.value, nodeTwo.value = nodeTwo.value, nodeOne.value
+    return tree
+
+
 print(repairBst(root))
 
