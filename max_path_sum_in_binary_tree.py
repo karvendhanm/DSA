@@ -5,17 +5,17 @@ class BT:
         self.right = None
 
 
-root = BT(1)
+root = BT(-1)
 
 # left branch
-root.left = BT(2)
-root.left.left = BT(4)
-root.left.right = BT(5)
+root.left = BT(-2)
+root.left.left = BT(-4)
+root.left.right = BT(-5)
 
 # right branch
-root.right = BT(3)
-root.right.right = BT(7)
-root.right.left = BT(6)
+root.right = BT(-3)
+root.right.right = BT(-7)
+root.right.left = BT(-6)
 
 
 # O(n) time | O(log(n)) space
@@ -36,7 +36,7 @@ def maxPathSumHelper(tree):
     value = tree.value
     maxSumAsBranch = max(maxChildSumAsBranch + value, value)
     maxSumAsRootNode = max(maxSumAsBranch, leftMaxSumAsBranch + value + rightMaxSumAsBranch)
-    maxPathSum = max(leftMaxPathSum, rightMaxPathSum, maxSumAsRootNode)
+    maxPathSum = max(maxSumAsRootNode, leftMaxPathSum, rightMaxPathSum)
     return maxSumAsBranch, maxPathSum
 
 
