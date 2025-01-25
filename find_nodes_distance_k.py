@@ -19,12 +19,37 @@ tree.right.right.left = BT(7)
 tree.right.right.right = BT(8)
 
 
+# first iteration
 def findNodesDistanceK(tree, target, k):
     # Write your code here.
     parentNodeDetails = {}
     assignParentNode(tree, None, parentNodeDetails)
     targetNode = identifyTargetNode(tree, target)
+
+    nodeValuesAtK = []
+    getNodeAtKDistance(targetNode, 0, k, nodeValuesAtK, parentNodeDetails, {})
+    return nodeValuesAtK
+
+
+def getNodeAtKDistance(node, currentDistance, targetDistance, nodeValuesAtK, parentNodeDetails, visitedNodeTracker):
+    if node is None or currentDistance > targetDistance or node in visitedNodeTracker:
+        return
+
+    visitedNodeTracker[node] = True
+
+    if currentDistance == targetDistance:
+        nodeValuesAtK.append(node.value)
+        return
+
+    getNodeAtKDistance(parentNodeDetails[node], currentDistance + 1, targetDistance,
+                       nodeValuesAtK, parentNodeDetails, visitedNodeTracker)
+    getNodeAtKDistance(node.left, currentDistance + 1, targetDistance,
+                       nodeValuesAtK, parentNodeDetails, visitedNodeTracker)
+    getNodeAtKDistance(node.right, currentDistance + 1, targetDistance,
+                       nodeValuesAtK, parentNodeDetails, visitedNodeTracker)
+
     return
+
 
 
 def assignParentNode(tree, parentNode, parentNodeDetails):
@@ -38,19 +63,17 @@ def assignParentNode(tree, parentNode, parentNodeDetails):
 
 def identifyTargetNode(tree, target):
     if tree is None:
-        return
+        return None
 
     if tree.value == target:
         return tree
 
+    left, right = None, None
     left = identifyTargetNode(tree.left, target)
     if not left:
         right = identifyTargetNode(tree.right, target)
 
     return left or right
-
-
-
 
 
 print(findNodesDistanceK(tree=tree, target=3, k=2))
