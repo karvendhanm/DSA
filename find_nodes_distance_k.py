@@ -31,7 +31,8 @@ def findNodesDistanceK(tree, target, k):
     return nodeValuesAtK
 
 
-def getNodeAtKDistance(node, currentDistance, targetDistance, nodeValuesAtK, parentNodeDetails, visitedNodeTracker):
+def getNodeAtKDistance(node, currentDistance, targetDistance,
+                       nodeValuesAtK, parentNodeDetails, visitedNodeTracker):
     if node is None or currentDistance > targetDistance or node in visitedNodeTracker:
         return
 
