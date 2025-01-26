@@ -24,8 +24,8 @@ tree.right.right.right = BT(8)
 def findNodesDistanceK(tree, target, k):
     # Write your code here.
     parentNodeDetails, nodeValuesAtK, targetNode = {}, [], []
-    # O(n) time | O(n) space
 
+    # O(n) time | O(n) space
     assignParentNode(tree, None, parentNodeDetails, target, targetNode)
     # targetNode = identifyTargetNode(tree, target)
     # O(k) time | O(k) space
