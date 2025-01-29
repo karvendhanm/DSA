@@ -19,7 +19,7 @@ tree.right.right.left = BT(7)
 tree.right.right.right = BT(8)
 
 
-def getNodesAtDistanceK(tree, targetDistance, nodesAtDistanceK, currentDistance=0):
+def getNodesAtDistanceK(tree, currentDistance, targetDistance, nodesAtDistanceK):
     if tree is None or currentDistance > targetDistance:
         return
 
@@ -27,8 +27,8 @@ def getNodesAtDistanceK(tree, targetDistance, nodesAtDistanceK, currentDistance=
         nodesAtDistanceK.append(tree.value)
         return
 
-    getNodesAtDistanceK(tree.left, targetDistance, nodesAtDistanceK, currentDistance + 1)
-    getNodesAtDistanceK(tree.right, targetDistance, nodesAtDistanceK, currentDistance + 1)
+    getNodesAtDistanceK(tree.left, currentDistance + 1, targetDistance, nodesAtDistanceK)
+    getNodesAtDistanceK(tree.right, currentDistance + 1, targetDistance, nodesAtDistanceK)
 
     return
 
@@ -38,25 +38,25 @@ def findNodesDistanceKHelper(tree, target, k, nodesAtDistanceK, currentDistance)
         return -1
 
     if tree.value == target:
-        getNodesAtDistanceK(tree, k, nodesAtDistanceK)
+        getNodesAtDistanceK(tree, 0, k, nodesAtDistanceK)
         return currentDistance
 
     left = findNodesDistanceKHelper(tree.left, target, k, nodesAtDistanceK, currentDistance + 1)
     right = findNodesDistanceKHelper(tree.right, target, k, nodesAtDistanceK, currentDistance + 1)
 
     if left != -1:
-        distance = k - (left - currentDistance)
-        if distance == 0:
+        targetDistance = k - (left - currentDistance)
+        if targetDistance == 0:
             nodesAtDistanceK.append(tree.value)
-        elif distance > 0:
-            getNodesAtDistanceK(tree.right, distance, nodesAtDistanceK, 1)
+        elif targetDistance > 0:
+            getNodesAtDistanceK(tree.right, 1, targetDistance, nodesAtDistanceK)
         return left
     elif right != -1:
-        distance = k - (right - currentDistance)
-        if distance == 0:
+        targetDistance = k - (right - currentDistance)
+        if targetDistance == 0:
             nodesAtDistanceK.append(tree.value)
-        elif distance > 0:
-            getNodesAtDistanceK(tree.left, distance, nodesAtDistanceK, 1)
+        elif targetDistance > 0:
+            getNodesAtDistanceK(tree.left, 1, targetDistance, nodesAtDistanceK)
         return right
     return -1
 
