@@ -55,6 +55,31 @@
 
 # third iteration
 # O(n^2) time | O(n) space
+# def maxSumIncreasingSubsequence(array):
+#     n = len(array)
+#     sums = array[:]
+#     sequences = [None] * n
+#     max_idx = 0
+#
+#     for i in range(n):
+#         for j in range(0, i):
+#             if array[j] < array[i] and array[i] + sums[j] > sums[i]:
+#                 sums[i] = array[i] + sums[j]
+#                 sequences[i] = j
+#         if sums[i] > sums[max_idx]:
+#             max_idx = i
+#
+#     biggestSum = sums[max_idx]
+#     # Reconstruct the subsequence
+#     subsequence = [array[max_idx]]
+#     while sequences[max_idx] is not None:
+#         max_idx = sequences[max_idx]
+#         subsequence.append(array[max_idx])
+#     return [biggestSum, subsequence[::-1]]
+
+
+# fourth iteration
+# O(n^2) time | O(n) space
 def maxSumIncreasingSubsequence(array):
     n = len(array)
     sums = array[:]
@@ -69,13 +94,15 @@ def maxSumIncreasingSubsequence(array):
         if sums[i] > sums[max_idx]:
             max_idx = i
 
-    biggestSum = sums[max_idx]
-    # Reconstruct the subsequence
-    subsequence = [array[max_idx]]
-    while sequences[max_idx] is not None:
-        max_idx = sequences[max_idx]
-        subsequence.append(array[max_idx])
-    return [biggestSum, subsequence[::-1]]
+    return sums[max_idx], buildSequence(array, sequences, max_idx)
+
+
+def buildSequence(array, sequences, current_idx):
+    sequence = []
+    while current_idx is not None:
+        sequence.append(array[current_idx])
+        current_idx = sequences[current_idx]
+    return list(reversed(sequence))
 
 
 print(maxSumIncreasingSubsequence([10, 70, 20, 30, 50, 11, 30]))
