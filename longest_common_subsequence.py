@@ -1,5 +1,7 @@
 # first iteration
-# O() time | O() space
+# O(n * m * min(n * m)) time | O(n * m * min(n * m)) space
+# where n is the length of str2
+# m is the length of str1
 def longestCommonSubsequence(str1, str2):
     # Write your code here.
     array = [["" for _ in range(len(str2) + 1)] for _ in range(len(str1) + 1)]
