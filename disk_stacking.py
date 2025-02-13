@@ -3,12 +3,15 @@
 def diskStacking(disks):
     # Write your code here.
     sorted_disks = sorted(disks, key=lambda x: x[2], reverse=False)
+
     diskStacking = []
     for i in range(len(sorted_disks)):
         height = sorted_disks[i][2]
         diskStacking.append([height, -1])
+
     maxHeight = sorted_disks[0][2]
     maxHeightIndex = 0
+
     for i in range(1, len(diskStacking)):
         for j in range(i):
             if (sorted_disks[j][0] < sorted_disks[i][0]
@@ -21,6 +24,7 @@ def diskStacking(disks):
             if diskStacking[i][0] > maxHeight:
                 maxHeight = diskStacking[i][0]
                 maxHeightIndex = i
+
     return getSequence(diskStacking, maxHeightIndex, sorted_disks)
 
 
@@ -36,3 +40,4 @@ def getSequence(diskStacking, maxHeightIndex, sorted_disks):
 
 disks = [[2, 1, 2], [3, 2, 3], [2, 2, 8], [2, 3, 4], [1, 2, 1], [4, 4, 5], [1, 1, 4]]
 print(diskStacking(disks))
+
