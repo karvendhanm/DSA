@@ -1,5 +1,5 @@
 # first iteration
-# O(n ^ 3) time | O(n + m) space
+# O(n ^ 3 + m) time | O(n + m) space
 # where n is the length of pi
 # where m is the size of numbers
 def numbersInPi(pi, numbers):
