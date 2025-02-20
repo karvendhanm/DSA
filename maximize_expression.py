@@ -48,9 +48,9 @@ def maximizeExpression(array):
     if len(array) < 4:
         return 0
 
-    max_A = [float("-inf")] * len(array)
-    max_A_B = [float("-inf")] * len(array)
-    max_A_B_C = [float("-inf")] * len(array)
+    max_A = [float("-inf")] * (len(array) - 3)
+    max_A_B = [float("-inf")] * (len(array) - 2)
+    max_A_B_C = [float("-inf")] * (len(array) - 1)
     max_A_B_C_D = [float("-inf")] * len(array)
 
     max_A[0] = array[0]
